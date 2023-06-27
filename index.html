@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+	<meta name="robots" content="noindex" />
+    <title>Genshin</title>
+	<style>
+        body {
+            background-color: #232931;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .page {
+            margin-top: 44px;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .tabs {
+            display: flex;
+            /* border-bottom: 2px solid white; */
+            padding: 5px;
+            position: fixed;
+            top: 0;
+            background-color: #393E46;
+            width: 100%;
+            height: 36px;
+        }
+        
+        .tabs_button {
+            margin-right: 10px;
+            color: white;
+            font-size: 18px;
+            background-color: #393E46;
+        }
+
+        .tabs_button.active {
+            border-bottom: 1px solid yellow;
+        }
+
+        table {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        thead {
+            position: sticky;
+            top: 45px;
+            background-color: #232931;
+        }
+
+        td {
+            border-top: 1px solid lightblue;
+            padding: 5px;
+            vertical-align: top;
+        }
+        th {
+            border-bottom: 2px solid lightblue;
+        }
+        img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .art-img {
+            text-align: center;
+            vertical-align: baseline;
+        }
+
+        .art-desc {
+            width: 400px;
+        }
+
+        .art-chars div {
+            max-width: 150px;
+        }
+        .art-chars {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        strong {
+            color: yellow;
+        }
+
+        .art-chars span {
+            color: darkgrey
+        }
+
+
+        .char-img {
+            text-align: center;
+            vertical-align: baseline;
+        }
+
+        .art-desc {
+            width: 400px;
+        }
+
+        .flex {
+            text-align: center;
+            display: flex;
+        }
+
+        .char-boss, .char-arts {
+            vertical-align: top;
+        }
+
+        .char-items strong {
+            color: lightgreen;
+        }
+        .char-items {
+            vertical-align: middle;
+        }
+
+        .char-boss strong {
+            color: bisque;
+            color: deepskyblue;
+        }
+        .char-arts strong {
+            color: bisque;
+            color: darkgrey;
+        }
+
+        .char-boss .flex div, .char-items .flex div, .char-arts .flex div {
+            max-width: 100px;
+        }
+
+        .boss-items {
+            text-align: center;
+            vertical-align: baseline;
+            border-left: 1px solid lightcoral;
+            width: 150px;
+        }
+
+        .boss-items strong {
+            color: lightgreen;
+            color: deepskyblue;
+        }
+
+        .boss-chars strong {
+            color: bisque;
+            color: darkgrey;
+        }
+
+        .boss-chars {
+            text-align: center;
+            display: flex;
+        }
+
+        .boss-img {
+            vertical-align: middle;
+            width: 100px;
+            text-align: center;
+        }
+
+        .boss-chars div {
+            width: 80px;
+        }
+
+        .talents-week-day {
+            vertical-align: middle;
+            /* border-color: limegreen; */
+            border-top: 2px solid limegreen;
+            border-right: 1px solid deepskyblue;
+        }
+
+        .talents-week-chars {
+            text-align: center;
+            display: flex;
+            flex-flow: wrap;
+            border-top: 2px solid limegreen
+        }
+
+        .talents-week-item {
+            /* border-left: 1px solid deepskyblue; */
+            border-right: 1px solid deepskyblue;
+            padding: 5px 5px 5px 0px;
+            margin-right: 5px;
+        }
+
+        .talents-week-day strong {
+            color: deepskyblue;
+        }
+
+        .talents-week-item .flex {
+            border-top: 1px solid deepskyblue;
+            padding-top: 10px;
+        }
+
+        .talents-week-item .flex span {
+            color: darkgrey;
+        }
+
+        .talents-week-item img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .talents-week-item .flex div:not(:last-child) {
+            margin-right: 5px;
+            border-right: 1px solid gray;
+            padding-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="tabs">
+        <button class="tabs_button active" js-tab-button="0">Артефакты</button>
+        <button class="tabs_button" js-tab-button="1">Персонажи</button>
+        <button class="tabs_button" js-tab-button="2">Мировые боссы</button>
+        <button class="tabs_button" js-tab-button="3">Таланты</button>
+        <button class="tabs_button" js-tab-button="4">Таланты сегодня</button>
+    </header>
+    <div class="page">
+        <div class="tab" js-tab="0">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Артефакт</th>
+                        <th>Описание</th>
+                        <th>Персонажи</th>
+                    </tr>
+                </thead>
+                <tbody js-artifacts-tab>
+                    <!-- <tr>
+                        <td class="art-img">
+                            <img src="img/siyanie-vurukashi.webp" title="сияние варукаши">
+                            <br>
+                            <strong>Сияние Варукаши</strong>
+                        </td>
+                        <td class="art-desc">
+                            <strong>2 предмета:</strong> Увеличивает НР на 20%.<br><strong>4 предмета:</strong> Увеличивает урон элементального навыка и взрыва стихии на 10%. Если экипированный персонаж получает урон, этот эффект повышения урона увеличивается на 80% на 5 сек. Эффект может складываться до 5 раз. Отсчёт времени каждого уровня происходит отдельно. Эти эффекты активируются даже если экипированный персонаж не на поле боя.
+                        </td>
+                        <td class="art-chars">
+                            <div>
+                                <img src="img/yelan.webp" title="Е Лань">
+                                <br>
+                                <strong>Е Лань</strong>
+                            </div>
+                            <div>
+                                <img src="img/nilu.webp" title="Нилу">
+                                <br>
+                                <strong>Нилу</strong>
+                            </div>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="tab none" js-tab="1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Персонаж</th>
+                        <th>Мировой босс</th>
+                        <th>Таланты</th>
+                        <th>Артефакты</th>
+                    </tr>
+                </thead>
+                <tbody js-characters-tab>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab none" js-tab="2">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Босс</th>
+                        <th>Предмет</th>
+                        <th>Персонажи</th>
+                        <th>Предмет</th>
+                        <th>Персонажи</th>
+                        <th>Предмет</th>
+                        <th>Персонажи</th>
+                    </tr>
+                </thead>
+                <tbody js-world-bosses-tab>
+                    <!-- <tr>
+                        <td rowspan="3" class="boss-img">
+                            <img src="img/dvalin.webp" title="Ужас бури">
+                            <br>
+                            <strong>Ужас бури</strong>
+                        </td>
+                        <td class="boss-items">
+                            <img src="img/pero.webp" title="Перо Двалина">
+                            <br>
+                            <strong>Перо Двалина</strong>
+                        </td>
+                        <td class="boss-chars">
+                            <div>
+                                <img src="img/yelan.webp" title="Е Лань">
+                                <br>
+                                <strong>Е Лань</strong>
+                            </div>
+                            <div>
+                                <img src="img/nilu.webp" title="Нилу">
+                                <br>
+                                <strong>Нилу</strong>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="boss-items">
+                            <img src="img/pero.webp" title="Перо Двалина">
+                            <br>
+                            <strong>Перо Двалина</strong>
+                        </td>
+                        <td class="boss-chars">
+                            <div>
+                                <img src="img/yelan.webp" title="Е Лань">
+                                <br>
+                                <strong>Е Лань</strong>
+                            </div>
+                            <div>
+                                <img src="img/nilu.webp" title="Нилу">
+                                <br>
+                                <strong>Нилу</strong>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="boss-items">
+                            <img src="img/pero.webp" title="Перо Двалина">
+                            <br>
+                            <strong>Перо Двалина</strong>
+                        </td>
+                        <td class="boss-chars">
+                            <div>
+                                <img src="img/yelan.webp" title="Е Лань">
+                                <br>
+                                <strong>Е Лань</strong>
+                            </div>
+                            <div>
+                                <img src="img/nilu.webp" title="Нилу">
+                                <br>
+                                <strong>Нилу</strong>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="tab none" js-tab="3">
+            <table>
+                <thead>
+                    <tr>
+                        <th>День</th>
+                        <th>Персонажи</th>
+                    </tr>
+                </thead>
+                <tbody js-talents-week-tab>
+                    <!-- <tr>
+                        <td class="talents-week-day">
+                            <strong>Понедельник</strong>
+                        </td>
+                        <td class="talents-week-chars">
+                            <div class="talents-week-item">
+                                <strong>Мастерство алтарь пламени</strong>
+                                <div class="flex">
+                                    <div>
+                                        <img src="img/yelan.webp" title="Е Лань">
+                                        <br>
+                                        <strong>Е Лань</strong>
+                                    </div>
+                                    <div>
+                                        <img src="img/nilu.webp" title="Нилу">
+                                        <br>
+                                        <strong>Нилу</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="talents-week-item">
+                                <strong>Мастерство алтарь пламени</strong>
+                                <div class="flex">
+                                    <div>
+                                        <img src="img/yelan.webp" title="Е Лань">
+                                        <br>
+                                        <strong>Е Лань</strong>
+                                    </div>
+                                    <div>
+                                        <img src="img/nilu.webp" title="Нилу">
+                                        <br>
+                                        <strong>Нилу</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1189,6 +1189,7 @@ $(document).ready(function() {
     let $charactersTab = $('[js-characters-tab]');
     let $wordlBossesTab = $('[js-world-bosses-tab]');
     let $talentsWeekTab = $('[js-talents-week-tab]');
+    let $talentsDayTab = $('[js-talents-day-tab]');
 
     for (const [id, obj] of Object.entries(artifacts)) {
         let $tr = $(` <tr>
@@ -1465,6 +1466,71 @@ $(document).ready(function() {
         $tr.append($td);
         $talentsWeekTab.append($tr);
     }
+
+
+    (function(){
+        let i = (new Date().getDay());
+
+        switch(i) {
+            case 1: day = 'Понеділок'; break;
+            case 2: day = 'Вівторок'; break;
+            case 3: day = 'Середа'; break;
+            case 4: day = 'Четверг'; break;
+            case 5: day = 'П\'ятниця'; break;
+            case 6: day = 'Субота'; break;
+            case 0: day = 'Неділя'; break;
+        }
+
+        if(i == 0)
+            i += 7;
+
+        console.log(day);
+
+        for (const [id, obj] of Object.entries(talants)) {
+
+            if(!obj.days[i])
+                continue;
+
+            let $tr = $(`  <tr>
+                <td class="talents-week-day">
+                    <strong>${obj.name}</strong>
+                </td>
+            </tr>`);
+
+            let $td = $(`<td class="talents-week-chars"></td>`);
+
+            let $item = $(`<div class="talents-week-item"></div>`);
+
+            let $flex = $('<div class="flex"></div>');
+            $item.append($flex);
+
+            let counnt = 0;
+
+
+            for (const [charId, char] of Object.entries(characters)) {
+                if(char.talent != id)
+                    continue;
+
+                counnt++;
+
+                let $char = $(`<div>
+                    <img src="img/${charId}.webp" title="${char.name}">
+                    <br>
+                    <span>${char.name}</span>
+                </div>`);
+
+                $flex.append($char);
+            }
+
+            if(counnt)
+                $td.append($item);
+
+            $tr.append($td);    
+            $talentsDayTab.append($tr);
+        }
+
+        
+    })();
 });
 
 // только для сбора информации

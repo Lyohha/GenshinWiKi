@@ -229,6 +229,14 @@
             max-width: 1000px;
         }
 
+        .weapon-passive {
+            max-width: 500px;
+        }
+
+        .weapon-passive b {
+            color: yellow;
+        }
+
     </style>
 </head>
 <body>
@@ -239,6 +247,7 @@
         <button class="tabs_button" js-tab-button="3">Таланты</button>
         <button class="tabs_button" js-tab-button="4">Таланты сегодня</button>
         <button class="tabs_button" js-tab-button="5">Статы артефактов</button>
+        <button class="tabs_button" js-tab-button="6">Оружие</button>
     </header>
     <div class="page">
         <div class="tab" js-tab="0">
@@ -702,6 +711,63 @@
                         <td>6,99</td>
                         <td>7,77</td>
                     </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab none" js-tab="6">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Оружие</th>
+                        <th>Тип</th>
+                        <th>Редкость</th>
+                        <th>Основной стат</th>
+                        <th>Дополнительный стат</th>
+                        <th>День материалов</th>
+                        <th>Пасивка</th>
+                        <!-- <th>Пробуждения</th> -->
+                        <th>Использующие персонажи</th>
+                    </tr>
+                </thead>
+                <tbody js-weapons-tab>
+                    <!-- <tr>
+                        <td class="talents-week-day">
+                            <strong>Понедельник</strong>
+                        </td>
+                        <td class="talents-week-chars">
+                            <div class="talents-week-item">
+                                <strong>Мастерство алтарь пламени</strong>
+                                <div class="flex">
+                                    <div>
+                                        <img src="img/yelan.webp" title="Е Лань">
+                                        <br>
+                                        <strong>Е Лань</strong>
+                                    </div>
+                                    <div>
+                                        <img src="img/nilu.webp" title="Нилу">
+                                        <br>
+                                        <strong>Нилу</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="talents-week-item">
+                                <strong>Мастерство алтарь пламени</strong>
+                                <div class="flex">
+                                    <div>
+                                        <img src="img/yelan.webp" title="Е Лань">
+                                        <br>
+                                        <strong>Е Лань</strong>
+                                    </div>
+                                    <div>
+                                        <img src="img/nilu.webp" title="Нилу">
+                                        <br>
+                                        <strong>Нилу</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

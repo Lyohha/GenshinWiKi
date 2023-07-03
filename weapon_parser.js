@@ -115,7 +115,7 @@ $(document).ready(function() {
                     for(let i = 0; i < firstMatch.length; i++) {
                         if(match[i] == null)
                             break;
-                        stats[i] += '/' + match[i].replaceAll('<b>', '').replaceAll('</b>', '');
+                        stats[i] += '||' + match[i].replaceAll('<b>', '').replaceAll('</b>', '');
                     }
                 }
 

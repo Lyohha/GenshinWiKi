@@ -1194,7 +1194,7 @@ $(document).ready(function() {
     for (const [id, obj] of Object.entries(artifacts)) {
         let $tr = $(` <tr>
             <td class="art-img">
-                <img src="img/${id}.webp" title="${obj.title}">
+                <img loading="lazy" src="img/${id}.webp" title="${obj.title}">
                 <br>
                 <strong>${obj.title}</strong>
             </td>
@@ -1209,7 +1209,7 @@ $(document).ready(function() {
 
         obj.characters.forEach(function(value, index) {
             let $div = $(`<div>
-                <img src="img/${value}.webp" title="${characters[value].name}">
+                <img loading="lazy" src="img/${value}.webp" title="${characters[value].name}">
                 <br>
                 <span>${characters[value].name}</span>
             </div>`);
@@ -1224,7 +1224,7 @@ $(document).ready(function() {
     for (const [id, obj] of Object.entries(characters)) {
         let $tr = $(` <tr>
             <td class="char-img">
-                <img src="img/${id}.webp" title="${obj.name}">
+                <img loading="lazy" src="img/${id}.webp" title="${obj.name}">
                 <br>
                 <strong>${obj.name}</strong>
             </td>
@@ -1245,7 +1245,7 @@ $(document).ready(function() {
         for (const [artId, art] of Object.entries(artifacts)) {
             if(art.characters.includes(id)) {
                 let $art = $(`<div>
-                    <img src="img/${artId}.webp" title="${art.title}">
+                    <img loading="lazy" src="img/${artId}.webp" title="${art.title}">
                     <br>
                     <strong>${art.title}</strong>
                 </div>`);
@@ -1256,14 +1256,14 @@ $(document).ready(function() {
 
         if(obj.worldBoss != null) {
             let $boss = $(`<div>
-                <img src="img/${obj.worldBoss.id}.webp" title="${worldBosses[obj.worldBoss.id].name}">
+                <img loading="lazy" src="img/${obj.worldBoss.id}.webp" title="${worldBosses[obj.worldBoss.id].name}">
                 <br>
                 <strong>${worldBosses[obj.worldBoss.id].name}</strong>
             </div>`);
 
             $bosses.append($boss);
             $boss = $(`<div>
-                <img src="img/${obj.worldBoss.items}.webp" title="${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}">
+                <img loading="lazy" src="img/${obj.worldBoss.items}.webp" title="${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}">
                 <br>
                 <strong>${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}</strong>
             </div>`);
@@ -1309,7 +1309,7 @@ $(document).ready(function() {
 
         //     if(index == 0) {
         //         let $td = $(`<td rowspan="3" class="boss-img">
-        //             <img src="img/${id}.webp" title="${obj.name}">
+        //             <img loading="lazy" src="img/${id}.webp" title="${obj.name}">
         //             <br>
         //             <strong>${obj.name}</strong>
         //         </td>`);
@@ -1318,7 +1318,7 @@ $(document).ready(function() {
         //     }
 
         //     let $td = $(`<td class="boss-items">
-        //         <img src="img/${itemId}.webp" title="${itemObj}">
+        //         <img loading="lazy" src="img/${itemId}.webp" title="${itemObj}">
         //         <br>
         //         <strong>${itemObj}</strong>
         //     </td>`);
@@ -1339,7 +1339,7 @@ $(document).ready(function() {
         //             continue;
 
         //         let $div = $(`<div>
-        //             <img src="img/${charId}.webp" title="${charObj.name}">
+        //             <img loading="lazy" src="img/${charId}.webp" title="${charObj.name}">
         //             <br>
         //             <strong>${charObj.name}</strong>
         //         </div>`);
@@ -1360,7 +1360,7 @@ $(document).ready(function() {
         let $tr = $('<tr></tr>');
 
         let $td = $(`<td class="boss-img">
-            <img src="img/${id}.webp" title="${obj.name}">
+            <img loading="lazy" src="img/${id}.webp" title="${obj.name}">
             <br>
             <strong>${obj.name}</strong>
         </td>`);
@@ -1370,7 +1370,7 @@ $(document).ready(function() {
         for (const [itemId, itemObj] of Object.entries(obj.items)) {
 
             let $td = $(`<td class="boss-items">
-                <img src="img/${itemId}.webp" title="${itemObj}">
+                <img loading="lazy" src="img/${itemId}.webp" title="${itemObj}">
                 <br>
                 <strong>${itemObj}</strong>
             </td>`);
@@ -1391,7 +1391,7 @@ $(document).ready(function() {
                     continue;
 
                 let $div = $(`<div>
-                    <img src="img/${charId}.webp" title="${charObj.name}">
+                    <img loading="lazy" src="img/${charId}.webp" title="${charObj.name}">
                     <br>
                     <strong>${charObj.name}</strong>
                 </div>`);
@@ -1451,7 +1451,7 @@ $(document).ready(function() {
                 counnt++;
 
                 let $char = $(`<div>
-                    <img src="img/${charId}.webp" title="${char.name}">
+                    <img loading="lazy" src="img/${charId}.webp" title="${char.name}">
                     <br>
                     <span>${char.name}</span>
                 </div>`);
@@ -1514,7 +1514,7 @@ $(document).ready(function() {
                 counnt++;
 
                 let $char = $(`<div>
-                    <img src="img/${charId}.webp" title="${char.name}">
+                    <img loading="lazy" src="img/${charId}.webp" title="${char.name}">
                     <br>
                     <span>${char.name}</span>
                 </div>`);

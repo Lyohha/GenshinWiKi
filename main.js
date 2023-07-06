@@ -896,7 +896,7 @@ var characters = {
     },
     "dendro-puteshestvennik": {
         "name": "Путешественник (Дендро)",
-        "talent": "wit",
+        "talent": "instructions",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
             "items": "clezi",

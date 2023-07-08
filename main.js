@@ -638,7 +638,7 @@ var characters = {
         "talent": "elegance",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "smisl",
+            "items": "clezi",
         }
     },
     "kandakia": {

@@ -530,7 +530,7 @@ var characters = {
         "talent": "diligence",
         "worldBoss": {
             "id": "syoki-no-kami",
-            "items": "zercalo",
+            "items": "empty",
         }
     },
     "kaveh": {
@@ -783,7 +783,7 @@ var characters = {
         "talent": "world",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "smisl",
+            "items": "zercalo",
         }
     },
     "ci-ci": {
@@ -799,7 +799,7 @@ var characters = {
         "talent": "poetry",
         "worldBoss": {
             "id": "syoki-no-kami",
-            "items": "empty",
+            "items": "zercalo",
         }
     },
     "syao": {
@@ -823,7 +823,7 @@ var characters = {
         "talent": "honesty",
         "worldBoss": {
             "id": "syoki-no-kami",
-            "items": "zercalo",
+            "items": "empty",
         }
     },
     "behj-dou": {
@@ -923,7 +923,7 @@ var characters = {
         "talent": "wit",
         "worldBoss": {
             "id": "syoki-no-kami",
-            "items": "empty",
+            "items": "zercalo",
         }
     },
     "arataki-itto": {

@@ -410,7 +410,7 @@ var characters = {
         "talent": "elegance",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "clezi",
+            "items": "mudra",
         }
     },
     "sin-cyu": {
@@ -646,7 +646,7 @@ var characters = {
         "talent": "instructions",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "smisl",
+            "items": "clezi",
         }
     },
     "kokomi": {
@@ -751,7 +751,7 @@ var characters = {
         "talent": "honesty",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "smisl",
+            "items": "clezi",
         }
     },
     "tartalya": {
@@ -767,7 +767,7 @@ var characters = {
         "talent": "instructions",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "mudra",
+            "items": "smisl",
         }
     },
     "cyno": {
@@ -775,7 +775,7 @@ var characters = {
         "talent": "instructions",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "clezi",
+            "items": "mudra",
         }
     },
     "yae-miko": {
@@ -783,7 +783,7 @@ var characters = {
         "talent": "world",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "mudra",
+            "items": "smisl",
         }
     },
     "ci-ci": {
@@ -891,7 +891,7 @@ var characters = {
         "talent": "frailty",
         "worldBoss": {
             "id": "magacu-mitakeh-narukami-no-mikoto",
-            "items": "mudra",
+            "items": "smisl",
         }
     },
     "dendro-puteshestvennik": {

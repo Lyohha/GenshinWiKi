@@ -3031,8 +3031,8 @@ $damageForm.find('input').on('input', function(event) {
     result *= 1 + (elemental / 100) + (bonus / 100);
     critResult = result * (1 + (crit / 100));
 
-    real = result * OPONENT_SHIELD;
-    critReal = critResult * OPONENT_SHIELD;
+    real = result * OPONENT_SHIELD * 0.9;
+    critReal = critResult * OPONENT_SHIELD * 0.9;
 
     result = Math.round(result);
     critResult = Math.round(critResult);

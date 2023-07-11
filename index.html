@@ -237,6 +237,37 @@
             color: yellow;
         }
 
+        .tab-damage h2 {
+            color: deepskyblue;
+        }
+        .tab-damage h3 {
+            color: yellow;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+
+        .tab-damage {
+            padding: 10px;
+        }
+
+        .tab-damage  p, .tab-damage  label, .tab-damage input {
+            max-width: 1000px;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        .tab-damage label, .tab-damage input {
+            display: block;
+        }
+
+        .tab-damage-result {
+            color: yellow;
+        }
+
+        .tab-damage  label.tab-damage-result-text {
+            margin-top: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -248,6 +279,7 @@
         <button class="tabs_button" js-tab-button="4">Таланты сегодня</button>
         <button class="tabs_button" js-tab-button="5">Статы артефактов</button>
         <button class="tabs_button" js-tab-button="6">Оружие</button>
+        <button class="tabs_button" js-tab-button="7">Расчет урона</button>
     </header>
     <div class="page">
         <div class="tab" js-tab="0">
@@ -770,6 +802,30 @@
                     </tr> -->
                 </tbody>
             </table>
+        </div>
+
+        <div class="tab tab-damage none" js-tab="7">
+            <p>Расчет урона с навыки на основе статов и бафов персонажа. Все результаты примерные и не являются эталонными в реальном бою!</p>
+            <form js-damage-form>
+                <label>Значение стата от которого идет урон навыка</label>
+                <input name="stat" type="number" min="0" value="0"/>
+                <label>Урон навыка в процентах с описания</label>
+                <input name="damage" type="number" min="0" value="0"/>
+                <label>Крит. урон персонажа</label>
+                <input name="crit" type="number" min="0" value="0"/>
+                <label>Бонус элементального урона в процентах</label>
+                <input name="elemental" type="number" min="0" value="0"/>
+                <label>Бонус урона от других источников</label>
+                <input name="bonus" type="number" min="0" value="0"/>
+                <label class="tab-damage-result-text">Урон: </label>
+                <label class="tab-damage-result" js-result>0</label>
+                <label class="tab-damage-result-text">Урон с крита: </label>
+                <label class="tab-damage-result" js-crit-result>0</label>
+                <label class="tab-damage-result-text">Урон с учетом защиты противника: </label>
+                <label class="tab-damage-result" js-real>0</label>
+                <label class="tab-damage-result-text">Урон с крита с учетом защиты противника: </label>
+                <label class="tab-damage-result" js-crit-real>0</label>
+            </form>
         </div>
     </div>
 

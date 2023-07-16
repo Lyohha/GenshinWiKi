@@ -268,6 +268,21 @@
             margin-top: 15px;
         }
 
+        .tab-shields {
+            padding: 10px;
+        }
+
+        .tab-shields  p{
+            max-width: 1000px;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        .tab-shields img {
+            width: 1000px;
+            height: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -280,6 +295,7 @@
         <button class="tabs_button" js-tab-button="5">Статы артефактов</button>
         <button class="tabs_button" js-tab-button="6">Оружие</button>
         <button class="tabs_button" js-tab-button="7">Расчет урона</button>
+        <button class="tabs_button" js-tab-button="8">Пробитие щитов</button>
     </header>
     <div class="page">
         <div class="tab" js-tab="0">
@@ -826,6 +842,11 @@
                 <label class="tab-damage-result-text">Урон с крита с учетом защиты противника: </label>
                 <label class="tab-damage-result" js-crit-real>0</label>
             </form>
+        </div>
+        <div class="tab tab-shields none" js-tab="8">
+            <p> «Щиты Фатуи » относятся к щитам, используемым Фатуи . «Щиты Бездны» относятся к щитам, используемым всеми другими врагами.</p>
+            <p> Для «мягкого пробития» эффективность примерно на 50% по сравнению с соответствующими жестким пробитием.</p>
+            <img src="img/shields.png"/>
         </div>
     </div>
 

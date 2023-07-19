@@ -2958,6 +2958,51 @@ $(document).ready(function() {
 
         $weaponsTab.append($tr);
     }
+
+    
+    let $damageForm = $('[js-damage-form]');
+
+    const OPONENT_SHIELD = (100+90) / ((100+93) * (1-0)*(1-0)+(100+90));
+
+    $damageForm.find('input').on('input', function(event) {
+        let $stat = $damageForm.find('[name=stat]');
+        let $damage = $damageForm.find('[name=damage]');
+        let $crit = $damageForm.find('[name=crit]');
+        let $elemental = $damageForm.find('[name=elemental]');
+        let $bonus = $damageForm.find('[name=bonus]');
+
+        let stat = $stat.val();
+        let damage = $damage.val();
+        let crit = $crit.val();
+        let elemental = $elemental.val();
+        let bonus = $bonus.val();
+
+        let result = 0;
+        let critResult = 0;
+        let real = 0;
+        let critReal = 0;
+
+        result = stat * (damage / 100);
+
+        result *= 1 + (elemental / 100) + (bonus / 100);
+        critResult = result * (1 + (crit / 100));
+
+        real = result * OPONENT_SHIELD * 0.9;
+        critReal = critResult * OPONENT_SHIELD * 0.9;
+
+        result = Math.round(result);
+        critResult = Math.round(critResult);
+        real = Math.round(real);
+        critReal = Math.round(critReal);
+
+
+
+        $damageForm.find('[js-result]').html(result);
+        $damageForm.find('[js-crit-result]').html(critResult);
+        $damageForm.find('[js-real]').html(real);
+        $damageForm.find('[js-crit-real]').html(critReal);
+        
+    });
 });
 
 // только для сбора информации
@@ -3003,47 +3048,3 @@ $('[js-parser-form]').on('submit', function(event) {
     console.log(characters);
 });
 
-
-let $damageForm = $('[js-damage-form]');
-
-const OPONENT_SHIELD = (100+90) / ((100+93) * (1-0)*(1-0)+(100+90));
-
-$damageForm.find('input').on('input', function(event) {
-    let $stat = $damageForm.find('[name=stat]');
-    let $damage = $damageForm.find('[name=damage]');
-    let $crit = $damageForm.find('[name=crit]');
-    let $elemental = $damageForm.find('[name=elemental]');
-    let $bonus = $damageForm.find('[name=bonus]');
-
-    let stat = $stat.val();
-    let damage = $damage.val();
-    let crit = $crit.val();
-    let elemental = $elemental.val();
-    let bonus = $bonus.val();
-
-    let result = 0;
-    let critResult = 0;
-    let real = 0;
-    let critReal = 0;
-
-    result = stat * (damage / 100);
-
-    result *= 1 + (elemental / 100) + (bonus / 100);
-    critResult = result * (1 + (crit / 100));
-
-    real = result * OPONENT_SHIELD * 0.9;
-    critReal = critResult * OPONENT_SHIELD * 0.9;
-
-    result = Math.round(result);
-    critResult = Math.round(critResult);
-    real = Math.round(real);
-    critReal = Math.round(critReal);
-
-
-
-    $damageForm.find('[js-result]').html(result);
-    $damageForm.find('[js-crit-result]').html(critResult);
-    $damageForm.find('[js-real]').html(real);
-    $damageForm.find('[js-crit-real]').html(critReal);
-    
-});

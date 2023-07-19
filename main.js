@@ -2547,6 +2547,12 @@ $(document).ready(function() {
     let $talentsWeekTab = $('[js-talents-week-tab]');
     let $talentsDayTab = $('[js-talents-day-tab]');
     let $weaponsTab = $('[js-weapons-tab]');
+    let $settingsTab = $('[js-settings-tab]');
+
+    let settings = {
+        charactersFilter: {},
+        charactersFilterEnable: true,
+    };
 
     for (const [id, obj] of Object.entries(artifacts)) {
         let $tr = $(` <tr>
@@ -2577,142 +2583,230 @@ $(document).ready(function() {
         $artifactsTab.append($tr);
     }
 
-    // персонажи
-    for (const [id, obj] of Object.entries(characters)) {
-        let $tr = $(` <tr>
-            <td class="char-img">
-                <img loading="lazy" src="img/${id}.webp" title="${obj.name}">
-                <br>
-                <strong>${obj.name}</strong>
-            </td>
-            <td class="char-boss">
-                <div class="flex"></div>
-            </td>
-            <td class="char-items">
-            </td>
-            <td class="char-arts">
-                <div class="flex"></div>
-            </td>
-        </tr>`);
+    function fillCharacters() {
 
-        let $bosses = $tr.find('.char-boss .flex');
-        let $items = $tr.find('.char-items');
-        let $arts = $tr.find('.char-arts .flex');
+        $charactersTab.html('');
 
-        for (const [artId, art] of Object.entries(artifacts)) {
-            if(art.characters.includes(id)) {
-                let $art = $(`<div>
-                    <img loading="lazy" src="img/${artId}.webp" title="${art.title}">
+        // персонажи
+        for (const [id, obj] of Object.entries(characters)) {
+
+            if(settings.charactersFilterEnable && settings.charactersFilter[id] != true)
+                continue;
+
+            let $tr = $(` <tr>
+                <td class="char-img">
+                    <img loading="lazy" src="img/${id}.webp" title="${obj.name}">
                     <br>
-                    <strong>${art.title}</strong>
+                    <strong>${obj.name}</strong>
+                </td>
+                <td class="char-boss">
+                    <div class="flex"></div>
+                </td>
+                <td class="char-items">
+                </td>
+                <td class="char-arts">
+                    <div class="flex"></div>
+                </td>
+            </tr>`);
+
+            let $bosses = $tr.find('.char-boss .flex');
+            let $items = $tr.find('.char-items');
+            let $arts = $tr.find('.char-arts .flex');
+
+            for (const [artId, art] of Object.entries(artifacts)) {
+                if(art.characters.includes(id)) {
+                    let $art = $(`<div>
+                        <img loading="lazy" src="img/${artId}.webp" title="${art.title}">
+                        <br>
+                        <strong>${art.title}</strong>
+                    </div>`);
+
+                    $arts.append($art);
+                }
+            }
+
+            if(obj.worldBoss != null) {
+                let $boss = $(`<div>
+                    <img loading="lazy" src="img/${obj.worldBoss.id}.webp" title="${worldBosses[obj.worldBoss.id].name}">
+                    <br>
+                    <strong>${worldBosses[obj.worldBoss.id].name}</strong>
                 </div>`);
 
-                $arts.append($art);
+                $bosses.append($boss);
+                $boss = $(`<div>
+                    <img loading="lazy" src="img/${obj.worldBoss.items}.webp" title="${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}">
+                    <br>
+                    <strong>${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}</strong>
+                </div>`);
+
+                $bosses.append($boss);
             }
-        }
-
-        if(obj.worldBoss != null) {
-            let $boss = $(`<div>
-                <img loading="lazy" src="img/${obj.worldBoss.id}.webp" title="${worldBosses[obj.worldBoss.id].name}">
-                <br>
-                <strong>${worldBosses[obj.worldBoss.id].name}</strong>
-            </div>`);
-
-            $bosses.append($boss);
-            $boss = $(`<div>
-                <img loading="lazy" src="img/${obj.worldBoss.items}.webp" title="${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}">
-                <br>
-                <strong>${worldBosses[obj.worldBoss.id]['items'][obj.worldBoss.items]}</strong>
-            </div>`);
-
-            $bosses.append($boss);
-        }
 
 
-        if(talants[obj.talent] != null) {
-            for(let i = 1; i < 8; i++)
-            {
-                let day = '';
-    
-                switch(i) {
-                    case 1: day = 'Понеділок'; break;
-                    case 2: day = 'Вівторок'; break;
-                    case 3: day = 'Середа'; break;
-                    case 4: day = 'Четверг'; break;
-                    case 5: day = 'П\'ятниця'; break;
-                    case 6: day = 'Субота'; break;
-                    case 7: day = 'Неділя'; break;
-                }
-
-                if(talants[obj.talent].days[i]) {
-                    $items.append($(`<strong>${day}</strong><br/>`));
-                }
-            }
-        }
-
+            if(talants[obj.talent] != null) {
+                for(let i = 1; i < 8; i++)
+                {
+                    let day = '';
         
+                    switch(i) {
+                        case 1: day = 'Понеділок'; break;
+                        case 2: day = 'Вівторок'; break;
+                        case 3: day = 'Середа'; break;
+                        case 4: day = 'Четверг'; break;
+                        case 5: day = 'П\'ятниця'; break;
+                        case 6: day = 'Субота'; break;
+                        case 7: day = 'Неділя'; break;
+                    }
 
-        $charactersTab.append($tr);
+                    if(talants[obj.talent].days[i]) {
+                        $items.append($(`<strong>${day}</strong><br/>`));
+                    }
+                }
+            }
+
+            
+
+            $charactersTab.append($tr);
+
+        }
+
+        $talentsWeekTab.html('');
+
+        // таланты
+        for(let i = 1; i < 8; i++)
+        {
+            let day = '';
+
+            switch(i) {
+                case 1: day = 'Понеділок'; break;
+                case 2: day = 'Вівторок'; break;
+                case 3: day = 'Середа'; break;
+                case 4: day = 'Четверг'; break;
+                case 5: day = 'П\'ятниця'; break;
+                case 6: day = 'Субота'; break;
+                case 7: day = 'Неділя'; break;
+            }
+
+            let $tr = $(`  <tr>
+                <td class="talents-week-day">
+                    <strong>${day}</strong>
+                </td>
+            </tr>`);
+
+            let $td = $(`<td class="talents-week-chars"></td>`);            
+
+            for (const [id, obj] of Object.entries(talants)) {
+
+                if(!obj.days[i])
+                    continue;
+
+                let $item = $(`<div class="talents-week-item"></div>`);
+                $item.append(`<strong>${obj.name}</strong>`);
+
+                let $flex = $('<div class="flex"></div>');
+                $item.append($flex);
+
+                let counnt = 0;
+
+
+                for (const [charId, char] of Object.entries(characters)) {
+                    if(settings.charactersFilterEnable && settings.charactersFilter[charId] != true)
+                        continue;
+
+                    if(char.talent != id)
+                        continue;
+
+                    counnt++;
+
+                    let $char = $(`<div>
+                        <img loading="lazy" src="img/${charId}.webp" title="${char.name}">
+                        <br>
+                        <span>${char.name}</span>
+                    </div>`);
+
+                    $flex.append($char);
+                }
+
+                if(counnt)
+                    $td.append($item);
+            }
+
+            $tr.append($td);
+            $talentsWeekTab.append($tr);
+        }
+
+        $talentsDayTab.html('');
+        (function(){
+            let i = (new Date().getDay());
+
+            switch(i) {
+                case 1: day = 'Понеділок'; break;
+                case 2: day = 'Вівторок'; break;
+                case 3: day = 'Середа'; break;
+                case 4: day = 'Четверг'; break;
+                case 5: day = 'П\'ятниця'; break;
+                case 6: day = 'Субота'; break;
+                case 0: day = 'Неділя'; break;
+            }
+
+            if(i == 0)
+                i += 7;
+
+            console.log(day);
+
+            for (const [id, obj] of Object.entries(talants)) {
+
+                if(!obj.days[i])
+                    continue;
+
+                let $tr = $(`  <tr>
+                    <td class="talents-week-day">
+                        <strong>${obj.name}</strong>
+                    </td>
+                </tr>`);
+
+                let $td = $(`<td class="talents-week-chars"></td>`);
+
+                let $item = $(`<div class="talents-week-item"></div>`);
+
+                let $flex = $('<div class="flex"></div>');
+                $item.append($flex);
+
+                let counnt = 0;
+
+
+                for (const [charId, char] of Object.entries(characters)) {
+                    if(settings.charactersFilterEnable && settings.charactersFilter[charId] != true)
+                        continue;
+                    if(char.talent != id)
+                        continue;
+
+                    counnt++;
+
+                    let $char = $(`<div>
+                        <img loading="lazy" src="img/${charId}.webp" title="${char.name}">
+                        <br>
+                        <span>${char.name}</span>
+                    </div>`);
+
+                    $flex.append($char);
+                }
+
+                if(counnt)
+                    $td.append($item);
+
+                $tr.append($td);    
+                $talentsDayTab.append($tr);
+            }
+
+            
+        })();
 
     }
 
     // мировые боссы 
     for (const [id, obj] of Object.entries(worldBosses)) {
         let index = 0;
-
-        // for (const [itemId, itemObj] of Object.entries(obj.items)) {
-
-        //     let $tr = $('<tr></tr>');
-
-        //     if(index == 0) {
-        //         let $td = $(`<td rowspan="3" class="boss-img">
-        //             <img loading="lazy" src="img/${id}.webp" title="${obj.name}">
-        //             <br>
-        //             <strong>${obj.name}</strong>
-        //         </td>`);
-
-        //         $tr.append($td);
-        //     }
-
-        //     let $td = $(`<td class="boss-items">
-        //         <img loading="lazy" src="img/${itemId}.webp" title="${itemObj}">
-        //         <br>
-        //         <strong>${itemObj}</strong>
-        //     </td>`);
-
-        //     $tr.append($td);
-
-        //     $td = $('<td class="boss-chars"></td>');
-
-        //     for (const [charId, charObj] of Object.entries(characters)) {
-
-        //         if(charObj.worldBoss == null)
-        //             continue;
-
-        //         if(charObj.worldBoss.id != id)
-        //             continue;
-                
-        //         if(charObj.worldBoss.items != itemId)
-        //             continue;
-
-        //         let $div = $(`<div>
-        //             <img loading="lazy" src="img/${charId}.webp" title="${charObj.name}">
-        //             <br>
-        //             <strong>${charObj.name}</strong>
-        //         </div>`);
-
-        //         $td.append($div);
-        //     }
-
-        //     $td.append('<div></div>');
-
-        //     $tr.append($td);
-
-        //     $wordlBossesTab.append($tr);
-        //     index++;
-        // }
-
-        // $wordlBossesTab.append('<tr><td></td><td></td><td></td></tr>');
 
         let $tr = $('<tr></tr>');
 
@@ -2762,132 +2856,6 @@ $(document).ready(function() {
 
         $wordlBossesTab.append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
     }
-
-
-    // таланты
-    for(let i = 1; i < 8; i++)
-    {
-        let day = '';
-
-        switch(i) {
-            case 1: day = 'Понеділок'; break;
-            case 2: day = 'Вівторок'; break;
-            case 3: day = 'Середа'; break;
-            case 4: day = 'Четверг'; break;
-            case 5: day = 'П\'ятниця'; break;
-            case 6: day = 'Субота'; break;
-            case 7: day = 'Неділя'; break;
-        }
-
-        let $tr = $(`  <tr>
-            <td class="talents-week-day">
-                <strong>${day}</strong>
-            </td>
-        </tr>`);
-
-        let $td = $(`<td class="talents-week-chars"></td>`);            
-
-        for (const [id, obj] of Object.entries(talants)) {
-
-            if(!obj.days[i])
-                continue;
-
-            let $item = $(`<div class="talents-week-item"></div>`);
-            $item.append(`<strong>${obj.name}</strong>`);
-
-            let $flex = $('<div class="flex"></div>');
-            $item.append($flex);
-
-            let counnt = 0;
-
-
-            for (const [charId, char] of Object.entries(characters)) {
-                if(char.talent != id)
-                    continue;
-
-                counnt++;
-
-                let $char = $(`<div>
-                    <img loading="lazy" src="img/${charId}.webp" title="${char.name}">
-                    <br>
-                    <span>${char.name}</span>
-                </div>`);
-
-                $flex.append($char);
-            }
-
-            if(counnt)
-                $td.append($item);
-        }
-
-        $tr.append($td);
-        $talentsWeekTab.append($tr);
-    }
-
-
-    (function(){
-        let i = (new Date().getDay());
-
-        switch(i) {
-            case 1: day = 'Понеділок'; break;
-            case 2: day = 'Вівторок'; break;
-            case 3: day = 'Середа'; break;
-            case 4: day = 'Четверг'; break;
-            case 5: day = 'П\'ятниця'; break;
-            case 6: day = 'Субота'; break;
-            case 0: day = 'Неділя'; break;
-        }
-
-        if(i == 0)
-            i += 7;
-
-        console.log(day);
-
-        for (const [id, obj] of Object.entries(talants)) {
-
-            if(!obj.days[i])
-                continue;
-
-            let $tr = $(`  <tr>
-                <td class="talents-week-day">
-                    <strong>${obj.name}</strong>
-                </td>
-            </tr>`);
-
-            let $td = $(`<td class="talents-week-chars"></td>`);
-
-            let $item = $(`<div class="talents-week-item"></div>`);
-
-            let $flex = $('<div class="flex"></div>');
-            $item.append($flex);
-
-            let counnt = 0;
-
-
-            for (const [charId, char] of Object.entries(characters)) {
-                if(char.talent != id)
-                    continue;
-
-                counnt++;
-
-                let $char = $(`<div>
-                    <img loading="lazy" src="img/${charId}.webp" title="${char.name}">
-                    <br>
-                    <span>${char.name}</span>
-                </div>`);
-
-                $flex.append($char);
-            }
-
-            if(counnt)
-                $td.append($item);
-
-            $tr.append($td);    
-            $talentsDayTab.append($tr);
-        }
-
-        
-    })();
 
     // weapon
     /* <th>Оружие</th>
@@ -2958,6 +2926,82 @@ $(document).ready(function() {
 
         $weaponsTab.append($tr);
     }
+
+
+    // settings form
+    function loadSettings() {
+
+        settings.charactersFilterEnable = localStorage.getItem('charactersFilterEnable');
+
+        if(settings.charactersFilterEnable == 'true')
+            settings.charactersFilterEnable = true;
+        if(settings.charactersFilterEnable == 'false')
+            settings.charactersFilterEnable = false;
+        if(settings.charactersFilterEnable == null)
+            settings.charactersFilterEnable = false;
+
+        let charactersFilter = localStorage.getItem('charactersFilter');
+        console.log(charactersFilter);
+        if(charactersFilter != null)
+            settings.charactersFilter = JSON.parse(charactersFilter);
+    }
+
+    function saveSettings() {
+        localStorage.setItem('charactersFilter', JSON.stringify(settings.charactersFilter));
+        localStorage.setItem('charactersFilterEnable', settings.charactersFilterEnable);
+    }
+
+    function onCharacterFilterChange(event) {
+        settings.charactersFilter[this.value] = this.checked ? 1 : 0;
+        fillCharacters();
+        saveSettings();
+    }
+
+    $('[js-characters-filter-enable]').on('change', function(event) {
+        settings.charactersFilterEnable = this.checked;
+        fillCharacters();
+        saveSettings();
+    });
+
+    (function() {
+
+        loadSettings();
+
+        if(settings.charactersFilterEnable)
+            $('[js-characters-filter-enable]').prop( "checked", true );
+
+        let keys = Object.keys(characters);
+
+        let $list = $settingsTab.find('.settings_characters_list');
+
+        for(let i = 0; i < keys.length;) {
+
+            let $column = $('<div class="settings_characters_collumn"></div>');
+
+            for(let j = 0; j < 30 && i < keys.length; i++, j++) {
+                let key = keys[i];
+                let character = characters[key];
+
+                let $input = $(`<input id="settings_characters_${key}" type="checkbox" name="settings_characters_${key}" value="${key}" />`);
+
+                $input.on('change', onCharacterFilterChange);
+
+                if(settings.charactersFilter[key] != null)
+                    $input.prop( "checked", true );
+
+                let $p = $('<p></p>');
+
+                $p.append($input);
+                $p.append($(`<label for="settings_characters_${key}">${character.name}</label>`));
+
+                $column.append($p);
+            }
+
+            $list.append($column);
+        }
+
+        fillCharacters();
+    })();
 
     
     let $damageForm = $('[js-damage-form]');

@@ -283,6 +283,31 @@
             height: auto;
         }
 
+        .tab-settings {
+            padding: 10px;
+        }
+
+        .tab-settings p {
+            margin: 0;
+        }
+
+        .tab-settings .settings_characters_collumn input {  
+            margin-left: 0px;
+        }
+
+        .tab-settings p.settings_characters_filter {
+            margin-top: 20px;
+        }
+
+        .settings_characters_list {
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .settings_characters_collumn {
+            width: 300px;
+        }
+
     </style>
 </head>
 <body>
@@ -296,6 +321,7 @@
         <button class="tabs_button" js-tab-button="6">Оружие</button>
         <button class="tabs_button" js-tab-button="7">Расчет урона</button>
         <button class="tabs_button" js-tab-button="8">Пробитие щитов</button>
+        <button class="tabs_button" js-tab-button="100">Настройки</button>
     </header>
     <div class="page">
         <div class="tab" js-tab="0">
@@ -847,6 +873,25 @@
             <p> «Щиты Фатуи » относятся к щитам, используемым Фатуи . «Щиты Бездны» относятся к щитам, используемым всеми другими врагами.</p>
             <p> Для «мягкого пробития» эффективность примерно на 50% по сравнению с соответствующими жестким пробитием.</p>
             <img src="img/shields.png"/>
+        </div>
+        <div class="tab tab-settings none" js-tab="100" js-settings-tab>
+            <p>Можно указать какие персонажи будут отображаться в списках талантов и боссов.</p>
+            <p> Настройки сохраняются в браузере и при смене его или устройства не будут подтянуты автоматически!</p>
+            <p class="settings_characters_filter"><input id="settings_characters" type="checkbox" name="settings_characters" js-characters-filter-enable/><label for="settings_characters">Включить фильтр персонажей</label></p>
+            
+            <div class="settings_characters_list">
+                <!-- <div class="settings_characters_collumn">
+                    <p><input id="settings_characters_lany" type="checkbox" name="settings_characters_lany" /><label for="settings_characters_lany">Е Лань</label></p>
+                    <p><input id="settings_characters_hu" type="checkbox" name="settings_characters_hu" /> <label for="settings_characters_hu">Ху Тао</label></p>
+                    <p><input id="settings_characters_sinobu" type="checkbox" name="settings_characters_sinobu" /> <label for="settings_characters_sinobu">Синобу</label></p>
+                </div>
+                <div class="settings_characters_collumn">
+                    <p><input id="" type="checkbox" name="settings_characters_lany" /> <label for="">Е Лань</label></p>
+                    <p><input id="" type="checkbox" name="settings_characters_hu" /> <label for="">Ху Тао</label></p>
+                    <p><input id="" type="checkbox" name="settings_characters_sinobu" /><label for=""> Синобу</label></p>
+                </div> -->
+            </div>
+            
         </div>
     </div>
 

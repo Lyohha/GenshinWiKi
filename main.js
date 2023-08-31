@@ -1,4 +1,26 @@
 var artifacts = {
+    "ohotnik-sumerechnogo-dvora": {
+        "title": "<strong>Охотник Сумеречного двора</strong>",
+        "desc": "<strong>2 предмета:</strong> Увеличивает урон обычной и заряженной атаки на 15%.<br><strong>4 предмета:</strong> Увеличивает шанс крит. попадания на 12% на 5 сек., когда текущее HP увеличивается или снижается. Эффект может складываться до 3 раз.",
+        "characters": [
+            "linney",
+            "kamisato-ayato",
+            "yoimiya",
+            "hu-tao",
+            "syao",
+            "lynette"
+        ]
+    },
+    "zolotaya-truppa": {
+        "title": "<strong>Золотая труппа</strong>",
+        "desc": "<strong>2 предмета:</strong> Увеличивает урон элементального навыка на 20%.<br><strong>4 предмета:</strong> Увеличивает урон элементального навыка на 25%. Кроме того, когда персонаж не на поле боя, урон элементального навыка дополнительно увеличивается на 25%. Через 2 сек. после вступления в бой эффект исчезает.",
+        "characters": [
+            "nahida",
+            "yae-miko",
+            "fishl",
+            "albedo"
+        ]
+    },
     "siyanie-vurukashi": {
         "title": "Сияние Вурукаши",
         "desc": "<strong>2 предмета:</strong> Увеличивает НР на 20%.<br><strong>4 предмета:</strong> Увеличивает урон элементального навыка и взрыва стихии на 10%. Если экипированный персонаж получает урон, этот эффект повышения урона увеличивается на 80% на 5 сек. Эффект может складываться до 5 раз. Отсчёт времени каждого уровня происходит отдельно. Эти эффекты активируются даже если экипированный персонаж не на поле боя.",
@@ -119,6 +141,7 @@ var artifacts = {
         "characters": [
             "puteshestvennik-anemo",
             "venti",
+            "lynette",
             "syao",
             "sayu",
             "dzhinn",
@@ -138,6 +161,8 @@ var artifacts = {
             "kamisato-ayaka",
             "amber",
             "noehll",
+            "lynette",
+            "linney",
             "sayu",
             "tartalya",
             "hu-tao",
@@ -243,6 +268,7 @@ var artifacts = {
         "desc": "<strong>2 предмета:</strong> Пиро сопротивление: +40%<br><strong>4 предмета:</strong> Увеличивает урон против врагов, находящихся под действием Пиро, на 35%.",
         "characters": [
             "hu-tao",
+            "linney",
             "kli"
         ]
     },
@@ -277,6 +303,7 @@ var artifacts = {
         "characters": [
             "sin-yan",
             "syan-lin",
+            "linney",
             "bennet",
             "amber",
             "dilyuk",
@@ -429,6 +456,22 @@ var characters = {
             "items": "pero",
         }
     },
+    "linney": {
+        "name": "<strong>Лини</strong>",
+        "talent": "impartiality",
+        "worldBoss": {
+            "id": "apep",
+            "items": "oazis",
+        }
+    },
+    "lynette": {
+        "name": "<strong>Линетт</strong>",
+        "talent": "order",
+        "worldBoss": {
+            "id": "apep",
+            "items": "yantar",
+        }
+    },
     "syan-lin": {
         "name": "Сян Лин",
         "talent": "diligence",
@@ -520,10 +563,18 @@ var characters = {
     "baizhu": {
         "name": "Бай Чжу",
         "talent": "gold",
+        "worldBoss": {
+            "id": "apep",
+            "items": "paporotnik",
+        }
     },
     "kirara": {
         "name": "Кирара",
-        "talent": "",
+        "talent": "frailty",
+        "worldBoss": {
+            "id": "apep",
+            "items": "yantar",
+        }
     },
     "yaoyao": {
         "name": "Яо Яо",
@@ -536,6 +587,10 @@ var characters = {
     "kaveh": {
         "name": "Кавех",
         "talent": "wit",
+        "worldBoss": {
+            "id": "apep",
+            "items": "oazis",
+        }
     },
     "barbara": {
         "name": "Барбара",
@@ -665,6 +720,14 @@ var characters = {
     "puteshestvennik-geo": {
         "name": "Путешественник (Гео)",
         "talent": "diligence",
+    },
+    "puteshestvennik-gydro": {
+        "name": "Путешественник (Гидро)",
+        "talent": "order",
+        "worldBoss": {
+            "id": "apep",
+            "items": "paporotnik",
+        }
     },
     "amber": {
         "name": "Эмбер",
@@ -1009,6 +1072,14 @@ var worldBosses = {
             "empty": "Пустой колокольчик",
         }
     },
+    "apep": {
+        "name": "Апеп",
+        "items": {
+            "yantar": "Вечный янтарь",
+            "paporotnik": "Объявший небосвод папоротник",
+            "oazis": "Первозданный цветок оазиса",
+        }
+    },
 };
 
 var talants = {
@@ -1165,6 +1236,32 @@ var talants = {
             4: true,
             5: false,
             6: false,
+            7: true,
+        }
+    },
+    "impartiality": {
+        "name": "О беспристрастии",
+        "dungeon": "",
+        "days": {
+            1: true,
+            2: false,
+            3: false,
+            4: true,
+            5: false,
+            6: false,
+            7: true,
+        }
+    },
+    "order": {
+        "name": "О порядке",
+        "dungeon": "",
+        "days": {
+            1: false,
+            2: false,
+            3: true,
+            4: false,
+            5: false,
+            6: true,
             7: true,
         }
     },

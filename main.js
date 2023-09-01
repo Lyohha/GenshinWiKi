@@ -457,7 +457,7 @@ var characters = {
         }
     },
     "linney": {
-        "name": "<strong>Лини</strong>",
+        "name": "Лини",
         "talent": "impartiality",
         "worldBoss": {
             "id": "apep",
@@ -465,7 +465,7 @@ var characters = {
         }
     },
     "lynette": {
-        "name": "<strong>Линетт</strong>",
+        "name": "Линетт",
         "talent": "order",
         "worldBoss": {
             "id": "apep",

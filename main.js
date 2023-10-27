@@ -468,12 +468,12 @@ var artifacts = {
 var characters = {
     "furina": {
         "name": "Фурина",
-        "talent": null,
+        "talent": "justice",
         "worldBoss": null
     },
     "charlotte": {
         "name": "Шарлотта",
-        "talent": null,
+        "talent": "justice",
         "worldBoss": null
     },
     "wriothesley": {

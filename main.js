@@ -469,12 +469,18 @@ var characters = {
     "furina": {
         "name": "Фурина",
         "talent": "justice",
-        "worldBoss": null
+        "worldBoss": {
+            "id": "narval",
+            "items": "massa",
+        }
     },
     "charlotte": {
         "name": "Шарлотта",
         "talent": "justice",
-        "worldBoss": null
+        "worldBoss": {
+            "id": "narval",
+            "items": "darknity",
+        }
     },
     "wriothesley": {
         "name": "Ризли",
@@ -1146,6 +1152,14 @@ var worldBosses = {
             "yantar": "Вечный янтарь",
             "paporotnik": "Объявший небосвод папоротник",
             "oazis": "Первозданный цветок оазиса",
+        }
+    },
+    "narval": {
+        "name": "Всепожирающий нарвал",
+        "items": {
+            "darknity": "Тёмная шёлковая нить",
+            "vihry": "Тёмный глаз вихря",
+            "massa": "Тёмная масса",
         }
     },
 };

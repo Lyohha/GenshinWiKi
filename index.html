@@ -321,6 +321,7 @@
         <button class="tabs_button" js-tab-button="6">Оружие</button>
         <button class="tabs_button" js-tab-button="7">Расчет урона</button>
         <button class="tabs_button" js-tab-button="8">Пробитие щитов</button>
+        <button class="tabs_button" js-tab-button="9">Гемы</button>
         <button class="tabs_button" js-tab-button="100">Настройки</button>
     </header>
     <div class="page">
@@ -893,9 +894,35 @@
             </div>
             
         </div>
+        <div class="tab tab-gems none" js-tab="9">
+            <p>Данные расчет гемов учитывая только ежедневные задания, луну, стрим разработчиков, компенсацию за обновление и приблизительные гемы за ивенты!</p>
+            <p>Расчет производится относительно следующего игрового дня, то есть те гемы, что вы могли сегодня получить, учтены не будут!</p>
+            <p>Обновления бездны на данные момент также не будут учитываться!</p>
+            <form js-gems-form>
+                <label>Считать до конца патча: </label>
+                <select js-gems-patch-list>
+                </select>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Патч</th>
+                            <th>F2P первой половины</th>
+                            <th>Луна первой половины</th>
+                            <th>F2P второй половины</th>
+                            <th>Луна второй половины</th>
+                            <th>F2P всего</th>
+                            <th>Луна всего </th>
+                            <th>Всего </th>
+                        </tr>
+                    </thead>
+                    <tbody js-gems-tab>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="main.js?v4.2-11.11.2023.19.52"></script>
+    <script src="main.js?v4.2-12.11.2023.12.31"></script>
 </body>
 </html>

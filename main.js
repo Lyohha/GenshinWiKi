@@ -2962,6 +2962,7 @@ $(document).ready(function() {
     let $talentsDayTab = $('[js-talents-day-tab]');
     let $weaponsTab = $('[js-weapons-tab]');
     let $settingsTab = $('[js-settings-tab]');
+    let $gemsTab = $('[js-gems-tab]');
 
     let settings = {
         charactersFilter: {},
@@ -3461,6 +3462,209 @@ $(document).ready(function() {
         $damageForm.find('[js-crit-real]').html(critReal);
         
     });
+
+
+    // Gems
+    var PATCH40START = new Date();
+    PATCH40START.setDate(16);
+    PATCH40START.setMonth(7);
+    PATCH40START.setFullYear(2023);
+    PATCH40START.setSeconds(0);
+    PATCH40START.setMinutes(0);
+    PATCH40START.setHours(0);
+
+
+    function fillGems(version) {
+        $gemsTab.html('');
+
+        version = parseInt(version);
+        let lastVer = parseInt(version / 10);
+        let lastCurVer = version - lastVer * 10;
+        let currentVersion = version;
+
+        let curVer = 4;
+        let curSubVer = 0;
+
+        let currentDate = new Date();
+        currentDate.setSeconds(0);
+        currentDate.setMinutes(0);
+        currentDate.setHours(0);
+
+        let days = parseInt((currentDate - PATCH40START) / (1000 * 60 * 60 * 24)) + 1;
+
+        for(; curVer < 8; curVer++) {
+            for(; curSubVer < 9 && days > 42; curSubVer++) {
+                days -= 42;
+            }
+            if(days <= 42)
+                break;
+            curSubVer = 0;
+        }
+
+        let totalf2p = 0;
+        let totalMoone = 0;
+
+        let part1Gems = 0;
+        let part2Gems = 0;
+        let part1Moone = 0;
+        let part2Moone = 0;
+
+        days = 42 - days;
+
+        let iventsDays = days - 21;
+
+        if(days > 21) {
+            part1Gems = (days - 21) * 60;
+            part1Moone = (days - 21) * 90;
+
+            iventsDays = days - 21;
+
+            if(iventsDays > 0) {
+                part1Gems += (iventsDays > 6 ? 6 : iventsDays) * 60;
+            }
+
+            if(iventsDays > 6) {
+                part1Gems += (iventsDays > 13 ? 7 : iventsDays - 6) * 140;
+            }
+
+            if(iventsDays > 13) {
+                part1Gems += (iventsDays - 13) * 60;
+            }
+        }
+
+        if(days > 21)
+            days = 21;
+
+        part2Gems = days * 60;
+        part2Moone = days * 90;
+
+        if(days > 6) {
+            part2Gems += (days - 6) * 60;
+        }
+
+        if(days > 12) {
+            part2Gems += 300;
+        }
+
+
+        $gemsTab.append($(`
+        <tr>
+            <td>${curVer}.${curSubVer}</td>
+            <td align="right">${part1Gems}</td>
+            <td align="right">${part1Moone}</td>
+            <td align="right">${part2Gems}</td>
+            <td align="right">${part2Moone}</td>
+            <td align="right">${part1Gems + part2Gems}</td>
+            <td align="right">${part1Moone + part2Moone}</td>
+            <td align="right">${part1Gems + part2Gems + part1Moone + part2Moone}</td>
+        </tr>`));
+
+        totalf2p += part1Gems + part2Gems;
+        totalMoone += part1Moone + part2Moone;
+
+        curSubVer++;
+        if(curSubVer == 9) {
+            curVer++;
+            curSubVer = 0;
+        }
+
+        currentVersion = curVer * 10 + curSubVer;
+
+        part1Gems = 60*21 + 600 + 140 * 7 + 60 * 7 + 60 * 6;
+        part2Gems = 60*21 + 300 + 15 * 60;
+        part1Moone = 90*21;
+        part2Moone = 90*21;
+
+        for(; curVer < 8 && currentVersion <= version; curVer++) {
+            for(; curSubVer < 9 && currentVersion <= version; curSubVer++, currentVersion = curVer * 10 + curSubVer) {
+                
+                $gemsTab.append($(`
+                <tr>
+                    <td>${curVer}.${curSubVer}</td>
+                    <td align="right">${part1Gems}</td>
+                    <td align="right">${part1Moone}</td>
+                    <td align="right">${part2Gems}</td>
+                    <td align="right">${part2Moone}</td>
+                    <td align="right">${part1Gems + part2Gems}</td>
+                    <td align="right">${part1Moone + part2Moone}</td>
+                    <td align="right">${part1Gems + part2Gems + part1Moone + part2Moone}</td>
+                </tr>`));
+
+                totalf2p += part1Gems + part2Gems;
+                totalMoone += part1Moone + part2Moone;
+                
+            }
+            curSubVer = 0;
+        }
+
+        $gemsTab.append($(`
+        <tr>
+            <td></td>
+            <td align="right"></td>
+            <td align="right"></td>
+            <td align="right"></td>
+            <td align="right"></td>
+            <td align="right">${totalf2p}</td>
+            <td align="right">${totalMoone}</td>
+            <td align="right">${totalf2p + totalMoone}</td>
+        </tr>`));
+        $gemsTab.append($(`
+        <tr>
+            <td></td>
+            <td align="right"></td>
+            <td align="right"></td>
+            <td align="right"></td>
+            <td align="right">Круток: </td>
+            <td align="right">${parseInt(totalf2p / 160)}</td>
+            <td align="right">${parseInt(totalMoone / 160)}</td>
+            <td align="right">${parseInt((totalf2p + totalMoone) / 160)}</td>
+        </tr>`));
+    }
+
+    function fillVGemsPatches() {
+        let curVer = 4;
+        let curSubVer = 0;
+
+        let currentDate = new Date();
+        currentDate.setSeconds(0);
+        currentDate.setMinutes(0);
+        currentDate.setHours(0);
+
+        let days = parseInt((currentDate - PATCH40START) / (1000 * 60 * 60 * 24));
+
+        for(; curVer < 8; curVer++) {
+            for(; curSubVer < 9 && days > 42; curSubVer++) {
+                days -= 42;
+            }
+            if(days <= 42)
+                break;
+            curSubVer = 0;
+        }
+
+        let $select = $('[js-gems-patch-list]');
+        $select.html();
+
+        const curVerSelect = curVer;
+        const curSubVerSelect = curSubVer;
+
+        for(; curVer < 8; curVer++) {
+            for(; curSubVer < 9; curSubVer++) {
+                let $option = $(`<option value="${curVer}${curSubVer}">${curVer}.${curSubVer}</option>`);
+                $select.append($option);
+            }
+            curSubVer = 0;
+        }
+
+        fillGems(curVerSelect * 10 + curSubVerSelect);
+    }
+
+    fillVGemsPatches();
+
+    $('[js-gems-patch-list]').on('change', function(event) {
+        event.preventDefault();
+        fillGems($(this).val());
+    })
+
 });
 
 // только для сбора информации

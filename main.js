@@ -2941,6 +2941,14 @@ let weapons = {
 }
 
 $(document).ready(function() {
+
+    let settings = {
+        charactersFilter: {},
+        charactersFilterEnable: true,
+        lastTab: 0,
+        disabledTabs: [],
+    };
+
     $('[js-tab-button]').on('click', function(event) {
         event.preventDefault();
         $('.tab').addClass('none');
@@ -2953,6 +2961,8 @@ $(document).ready(function() {
         let id = $this.attr('js-tab-button');
         
         $('[js-tab=' + id + ']').removeClass('none');
+        settings.lastTab = id;
+        saveSettings();
     });
 
     let $artifactsTab = $('[js-artifacts-tab]');
@@ -2963,11 +2973,6 @@ $(document).ready(function() {
     let $weaponsTab = $('[js-weapons-tab]');
     let $settingsTab = $('[js-settings-tab]');
     let $gemsTab = $('[js-gems-tab]');
-
-    let settings = {
-        charactersFilter: {},
-        charactersFilterEnable: true,
-    };
 
     for (const [id, obj] of Object.entries(artifacts)) {
         let $tr = $(` <tr>
@@ -3344,6 +3349,33 @@ $(document).ready(function() {
 
 
     // settings form
+    function disableTabs() {
+        let $buttons = $('.tabs_button');
+        $buttons.removeClass('none');
+
+        settings.disabledTabs.forEach(function(value) {
+            $('[js-tab-button="' + value + '"]').addClass('none');
+        });
+    }
+
+    function onDisabledTabListChange(event) {
+
+        let $tabList = $('.settings_tabs_list');
+        let $inputs = $tabList.find('input');
+
+        settings.disabledTabs = [];
+
+        $inputs.each(function(index, element) {
+            if(element.checked)
+                settings.disabledTabs.push(element.value);
+        });
+
+        disableTabs();
+
+        saveSettings();
+    }
+
+
     function loadSettings() {
 
         settings.charactersFilterEnable = localStorage.getItem('charactersFilterEnable');
@@ -3359,11 +3391,21 @@ $(document).ready(function() {
         console.log(charactersFilter);
         if(charactersFilter != null)
             settings.charactersFilter = JSON.parse(charactersFilter);
+
+        settings.lastTab = localStorage.getItem('lastTab');
+        if(settings.lastTab == null)
+            settings.lastTab = 0;
+
+        let disabledTabs = localStorage.getItem('disabledTabs');
+        if(disabledTabs != null)
+            settings.disabledTabs = JSON.parse(disabledTabs);
     }
 
     function saveSettings() {
         localStorage.setItem('charactersFilter', JSON.stringify(settings.charactersFilter));
         localStorage.setItem('charactersFilterEnable', settings.charactersFilterEnable);
+        localStorage.setItem('lastTab', settings.lastTab);
+        localStorage.setItem('disabledTabs', JSON.stringify(settings.disabledTabs));
     }
 
     function onCharacterFilterChange(event) {
@@ -3414,6 +3456,39 @@ $(document).ready(function() {
 
             $list.append($column);
         }
+
+
+        let $tabsList = $('[js-tab-button]');
+
+        let $tabList = $('.settings_tabs_list');
+        $tabList.html('');
+
+        $tabsList.each(function(index, element) {
+            let $element = $(element);
+
+            let id = $element.attr('js-tab-button');
+
+            if(id == '100')
+                return;            
+
+            let $input = $(`<input id="settings_tab_${id}" type="checkbox" name="settings_tab_${id}" value="${id}" />`);
+
+            $input.on('change', onDisabledTabListChange);
+
+            if(settings.disabledTabs.includes(id)) 
+                $input.prop( "checked", true );
+
+            let $p = $('<p></p>');
+
+            $p.append($input);
+            $p.append($(`<label for="settings_tab_${id}">${$element.html()}</label>`));
+
+            $tabList.append($p);
+        });
+
+        $('[js-tab-button="' + settings.lastTab + '"]').click();
+
+        disableTabs();
 
         fillCharacters();
     })();

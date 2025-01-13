@@ -5418,6 +5418,80 @@ $(document).ready(function() {
             
         })();
 
+        
+        // weapon
+        /* <th>Оружие</th>
+        <th>Тип</th>
+        <th>Редкость</th>
+        <th>Основной стат</th>
+        <th>Дополнительный стат</th>
+        <th>День материалов</th>
+        <th>Пасивка</th>
+        <!-- <th>Пробуждения</th> -->
+        <th>Использующие персонажи</th>*/
+        $weaponsTab.html('');
+        for (const [id, obj] of Object.entries(weapons)) {
+            let $tr = $(` <tr>
+                <td class="art-img">
+                    <img loading="lazy" src="img/weapon/${obj.image}" title="${obj.name}">
+                    <br>
+                    <strong>${obj.name}</strong>
+                </td>
+                <td>
+                    ${obj.type}
+                </td>
+                <td>
+                    ${obj.stars}*
+                </td>
+                <td>
+                    ${obj.main_stat}
+                </td>
+                <td>
+                    ${obj.additional_stat}
+                </td>
+                <td js-weapon-days>
+                </td>
+                <td class="weapon-passive">
+                    ${obj.passive}
+                </td>
+                <<td class="art-chars">
+                </td>
+            </tr>`);
+
+            let $chars = $tr.find('.art-chars');
+            let $days = $tr.find('[js-weapon-days]');
+
+            obj.characters.forEach(function(value, index) {
+                if(settings.charactersFilterEnable && settings.charactersFilter[value] != true)
+                    return;
+                let $div = $(`<div>
+                    <img loading="lazy" src="img/${value}.webp" title="${characters[value].name}">
+                    <br>
+                    <span>${characters[value].name}</span>
+                </div>`);
+
+                $chars.append($div);
+            });
+
+            obj.material_days.forEach(function(value, index) {
+                let day = '';
+
+                switch(value) {
+                    case 1: day = 'Понедельник'; break;
+                    case 2: day = 'Вторник'; break;
+                    case 3: day = 'Среда'; break;
+                    case 4: day = 'Четверг'; break;
+                    case 5: day = 'Пятниця'; break;
+                    case 6: day = 'Суббота'; break;
+                    case 0: day = 'Воскресенье'; break;
+                }
+
+                $days.html($days.html() + day + '<br>');
+            });
+
+            $weaponsTab.append($tr);
+        }
+
     }
 
     // мировые боссы 
@@ -5471,76 +5545,6 @@ $(document).ready(function() {
         $wordlBossesTab.append($tr);
 
         $wordlBossesTab.append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-    }
-
-    // weapon
-    /* <th>Оружие</th>
-    <th>Тип</th>
-    <th>Редкость</th>
-    <th>Основной стат</th>
-    <th>Дополнительный стат</th>
-    <th>День материалов</th>
-    <th>Пасивка</th>
-    <!-- <th>Пробуждения</th> -->
-    <th>Использующие персонажи</th>*/
-    for (const [id, obj] of Object.entries(weapons)) {
-        let $tr = $(` <tr>
-            <td class="art-img">
-                <img loading="lazy" src="img/weapon/${obj.image}" title="${obj.name}">
-                <br>
-                <strong>${obj.name}</strong>
-            </td>
-            <td>
-                ${obj.type}
-            </td>
-            <td>
-                ${obj.stars}*
-            </td>
-            <td>
-                ${obj.main_stat}
-            </td>
-            <td>
-                ${obj.additional_stat}
-            </td>
-            <td js-weapon-days>
-            </td>
-            <td class="weapon-passive">
-                ${obj.passive}
-            </td>
-            <<td class="art-chars">
-            </td>
-        </tr>`);
-
-        let $chars = $tr.find('.art-chars');
-        let $days = $tr.find('[js-weapon-days]');
-
-        obj.characters.forEach(function(value, index) {
-            let $div = $(`<div>
-                <img loading="lazy" src="img/${value}.webp" title="${characters[value].name}">
-                <br>
-                <span>${characters[value].name}</span>
-            </div>`);
-
-            $chars.append($div);
-        });
-
-        obj.material_days.forEach(function(value, index) {
-            let day = '';
-
-            switch(value) {
-                case 1: day = 'Понедельник'; break;
-                case 2: day = 'Вторник'; break;
-                case 3: day = 'Среда'; break;
-                case 4: day = 'Четверг'; break;
-                case 5: day = 'Пятниця'; break;
-                case 6: day = 'Суббота'; break;
-                case 0: day = 'Воскресенье'; break;
-            }
-
-            $days.html($days.html() + day + '<br>');
-        });
-
-        $weaponsTab.append($tr);
     }
 
 

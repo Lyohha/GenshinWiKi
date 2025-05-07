@@ -25,6 +25,7 @@ var artifacts = {
             "kinich",
             "mualani",
             "kachina",
+            "ifa",
             "chasca",
             "olorun",
             "mavuika",
@@ -38,6 +39,7 @@ var artifacts = {
         "desc": "<strong>2 предмета:</strong> Когда находящийся поблизости член группы активирует «Всплеск ночной духа», экипированный персонаж восстанавливает 6 единиц энергии.<br><strong>4 предмета:</strong> После того, как экипированный персонаж вызывает реакцию, связанную с его типом стихии, все ближайшие члены группы получают 12% бонуса элементального урона для стихий связанных с реакцией, на 15 сек. Если экипированный персонаж находится в состоянии Благословения Ночного духа при срабатывании этого эффекта, все ближайшие члены группы получают дополнительный 28% бонуса элементального урона для типов стихий связанных с реакцией, на 20 сне. Экипированный персонаж может вызвать этот эффект, находясь вне поля, а бонус урона от наборов артефактов с одинаковым названием не суммируется.",
         "characters": [
             "iansan",
+            "ifa",
             "varesa",
             "chasca",
             "mavuika",
@@ -166,6 +168,7 @@ var artifacts = {
         "title": "<strong>Золотая труппа</strong>",
         "desc": "<strong>2 предмета:</strong> Увеличивает урон элементального навыка на 20%.<br><strong>4 предмета:</strong> Увеличивает урон элементального навыка на 25%. Кроме того, когда персонаж не на поле боя, урон элементального навыка дополнительно увеличивается на 25%. Через 2 сек. после вступления в бой эффект исчезает.",
         "characters": [
+            "escoffier",
             "chiori",
             "mavuika",
             "navia",
@@ -332,6 +335,7 @@ var artifacts = {
         "title": "Заблудший в метели",
         "desc": "<strong>2 предмета:</strong> Увеличивает бонус Крио урона на 15%.<br><strong>4 предмета:</strong> Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус Заморозка, то дополнительно увеличивает шанс крит. попадания на 20%.",
         "characters": [
+            "escoffier",
             "charlotte",
             "citlali",
             "wriothesley",
@@ -349,6 +353,7 @@ var artifacts = {
         "desc": "<strong>2 предмета:</strong> Увеличивает бонус Анемо урона на 15%.<br><strong>4 предмета:</strong> Увеличивает урон Рассеивания на 60%. При взаимодействии Рассеивания с другим элементом, также понижает сопротивление противника к соответствующему элементу на 40% в течение 10 сек.",
         "characters": [
             "puteshestvennik-anemo",
+            "ifa",
             "mizuki",
             "lan-yan",
             "chasca",
@@ -715,6 +720,22 @@ var artifacts = {
 };
 
 var characters = {
+    "escoffier": {
+        "name": "Эскофье",
+        "talent": "justice",
+        "worldBoss": {
+            "id": "fire",
+            "items": "horn",
+        }
+    },
+    "ifa": {
+        "name": "Ифа",
+        "talent": "conflict",
+        "worldBoss": {
+            "id": "chess",
+            "items": "rook",
+        }
+    },
     "varesa": {
         "name": "Вареса",
         "talent": "conflict",
@@ -1608,6 +1629,14 @@ var worldBosses = {
             "scale": "Истлевшее чешуйчатое перо",
         }
     },
+    "chess": {
+        "name": "Игра пред вратами",
+        "items": {
+            "rook": "Вознёсшийся образец: Ладья",
+            "knight": "Вознёсшийся образец: Конь",
+            "queen": "Вознёсшийся образец: Ферзь",
+        }
+    },
 };
 
 var talants = {
@@ -1850,6 +1879,26 @@ var talants = {
 
 
 let weapons = {
+    "weapon_015": {
+        "name": "Симфонист ароматов",
+        "type": "Древковое",
+        "stars": "5",
+        "main_stat": "Базовая атака <br>46~608\n",
+        "additional_stat": "<b>Крит. урон</b><br>14,4%~66,2%\n",
+        "passive": "Симфония вкусов. Сила атаки повышается на <b>12%||15%||18%||21%||24%</b>. Когда экипированный персонаж неактивен, сила атаки дополнительно повышается на <b>12%||15%||18%||21%||24%</b>. После осуществления лечения экипированный и получивший лечение персонажи приобретают эффект Сладких эхо: их сила атаки повышается на <b>32%||40%||48%||56%||64%</b> на 3 сек. Этот эффект срабатывает, даже когда экипированный персонаж не на поле боя.",
+        "material_days": [],
+        "characters": [
+            "escoffier",
+            "emilie",
+            "arlecchino",
+            "hu-tao",
+            "syao",
+            "cyno",
+            "rozariya",
+            "shenh-he",
+        ],
+        "image": "weapon_015.webp"
+    },
     "weapon_014": {
         "name": "Переливающиеся чаяния",
         "type": "Катализатор",
@@ -1865,6 +1914,7 @@ let weapons = {
             "lan-yan",
             "saharoza",
             "nahida",
+            "ifa",
         ],
         "image": "weapon_014.webp"
     },
@@ -1878,6 +1928,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "mizuki",
+            "ifa",
             "citlali",
             "lan-yan",
             "saharoza",
@@ -1916,6 +1967,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "mizuki",
+            "ifa",
             "citlali",
             "lan-yan",
             "saharoza",
@@ -1995,6 +2047,7 @@ let weapons = {
             "mualani",
             "neuvillet",
             "kokomi",
+            "ifa",
         ],
         "image": "weapon_07.webp"
     },
@@ -2007,8 +2060,9 @@ let weapons = {
         "passive": "Увертюра яркого рассвета. Увеличивает силу атаки на <b>15%||19%||23%||27%||31%</b>. Когда экипированный персонаж активирует на враге Горение или наносит противникам со статусом Горение Дендро урон, наносимый урон увеличивается на <b>18%||23%||28%||33%||38%</b>. Этот эффект длится 8 сек. и складывается до 2 раз. После получения 2 уровней или обновления длительности с 2 уровнями восстанавливает <b>12||13||14||15||16</b> ед. энергии. Восстанавливать энергию таким образом можно 1 раз в 12 сек. Эти 2 эффекта срабатывают, даже когда персонаж не на поле боя.",
         "material_days": [],
         "characters": [
-            "arlecchino",
             "emilie",
+            "escoffier",
+            "arlecchino",
             "hu-tao",
             "syao",
             "cyno",
@@ -2071,6 +2125,7 @@ let weapons = {
             "emilie",
             "hu-tao",
             "syao",
+            "escoffier",
             "cyno",
             "rozariya",
             "shenh-he",
@@ -2122,6 +2177,7 @@ let weapons = {
             "kli",
             "nin-guan",
             "liza",
+            "ifa",
         ],
         "image": "weapon_01.webp"
     },
@@ -2256,6 +2312,7 @@ let weapons = {
             "shenh-he",
             "chzhun-li",
             "emilie",
+            "escoffier",
             "arlecchino",
             "cyno",
             "hu-tao",
@@ -2285,6 +2342,7 @@ let weapons = {
             "yanfehj",
             "liza",
             "nin-guan",
+            "ifa",
         ],
         "image": "weapon_7.png"
     },
@@ -2386,6 +2444,7 @@ let weapons = {
         "characters": [
             "hu-tao",
             "syan-lin",
+            "escoffier",
             "arlecchino",
             "emilie",
             "syao",
@@ -2415,6 +2474,7 @@ let weapons = {
             "yae-miko",
             "kli",
             "liza",
+            "ifa",
         ],
         "image": "weapon_13.png"
     },
@@ -2583,6 +2643,7 @@ let weapons = {
             "yae-miko",
             "kli",
             "liza",
+            "ifa",
         ],
         "image": "weapon_21.png"
     },
@@ -2602,6 +2663,7 @@ let weapons = {
             "mualani",
             "yanfehj",
             "nin-guan",
+            "ifa",
             "xianyun",
             "mizuki",
             "yae-miko",
@@ -2647,6 +2709,7 @@ let weapons = {
             "cyno",
             "syan-lin",
             "hu-tao",
+            "escoffier",
             "arlecchino",
             "emilie",
             "syao",
@@ -2728,6 +2791,7 @@ let weapons = {
             "saharoza",
             "citlali",
             "mizuki",
+            "ifa",
             "baizhu",
         ],
         "image": "weapon_28.png"
@@ -2750,6 +2814,7 @@ let weapons = {
             "mualani",
             "nin-guan",
             "xianyun",
+            "ifa",
             "yae-miko",
             "kli",
             "liza",
@@ -2816,6 +2881,7 @@ let weapons = {
             "arlecchino",
             "syogun-rajdehn",
             "cyno",
+            "escoffier",
             "hu-tao",
             "syan-lin",
             "emilie",
@@ -2871,6 +2937,7 @@ let weapons = {
             "nin-guan",
             "xianyun",
             "yae-miko",
+            "ifa",
             "liza",
         ],
         "image": "weapon_35.png"
@@ -2957,6 +3024,7 @@ let weapons = {
             "mualani",
             "nin-guan",
             "yae-miko",
+            "ifa",
             "kli",
             "liza",
         ],
@@ -3007,6 +3075,20 @@ let weapons = {
         ],
         "image": "weapon_41.png"
     },
+    "weapon_41_17": {
+        "name": "Каденция одиночества",
+        "type": "Стрелковое",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>42~510\n",
+        "additional_stat": "<b>HP</b><br>9,0%~41,3%\n",
+        "passive": "Бесшумный спуск. При попадании атаки по противнику на позиции цели наносится урон по площади, равный 40% от макс. HP. Этот эффект может возникнуть один раз в 15 сек.",
+        "material_days": [],
+        "characters": [
+            "diona",
+            "sigewinne",
+        ],
+        "image": "weapon_41_17.webp"
+    },
     "weapon_41_16": {
         "name": "Дворец мечты",
         "type": "Древковое",
@@ -3017,6 +3099,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "shenh-he",
+            "escoffier",
             "cyno",
             "hu-tao",
             "syan-lin",
@@ -3149,6 +3232,7 @@ let weapons = {
         "characters": [
             "neuvillet",
             "mualani",
+            "ifa",
         ],
         "image": "weapon_41_9.webp"
     },
@@ -3183,6 +3267,7 @@ let weapons = {
         "characters": [
             "mualani",
             "kokomi",
+            "ifa",
         ],
         "image": "weapon_41_7.webp"
     },
@@ -3341,6 +3426,7 @@ let weapons = {
             "toma",
             "syogun-rajdehn",
             "emilie",
+            "escoffier",
         ],
         "image": "weapon_44.png"
     },
@@ -3360,6 +3446,7 @@ let weapons = {
             "baizhu",
             "kokomi",
             "mizuki",
+            "ifa",
         ],
         "image": "weapon_45.png"
     },
@@ -3461,6 +3548,7 @@ let weapons = {
             "arlecchino",
             "emilie",
             "rozariya",
+            "escoffier",
         ],
         "image": "weapon_51.png"
     },
@@ -3516,6 +3604,7 @@ let weapons = {
             "yanfehj",
             "liza",
             "kli",
+            "ifa",
         ],
         "image": "weapon_54.png"
     },
@@ -3602,6 +3691,7 @@ let weapons = {
             "mualani",
             "liza",
             "nin-guan",
+            "ifa",
         ],
         "image": "weapon_58.png"
     },
@@ -3622,6 +3712,7 @@ let weapons = {
             "cyno",
             "rozariya",
             "shenh-he",
+            "escoffier",
         ],
         "image": "weapon_59.png"
     },
@@ -3796,6 +3887,7 @@ let weapons = {
             "wriothesley",
             "yanfehj",
             "strannik",
+            "ifa",
         ],
         "image": "weapon_68.png"
     },
@@ -3816,6 +3908,7 @@ let weapons = {
             "cyno",
             "rozariya",
             "shenh-he",
+            "escoffier",
         ],
         "image": "weapon_69.png"
     },
@@ -4011,6 +4104,7 @@ let weapons = {
             "strannik",
             "liza",
             "kli",
+            "ifa",
         ],
         "image": "weapon_79.png"
     },
@@ -4080,6 +4174,7 @@ let weapons = {
             "cyno",
             "rozariya",
             "shenh-he",
+            "escoffier",
         ],
         "image": "weapon_83.png"
     },
@@ -4262,6 +4357,7 @@ let weapons = {
             "baizhu",
             "liza",
             "mona",
+            "ifa",
         ],
         "image": "weapon_93.png"
     },
@@ -4313,6 +4409,7 @@ let weapons = {
             "wriothesley",
             "strannik",
             "kli",
+            "ifa",
         ],
         "image": "weapon_96.png"
     },
@@ -4333,6 +4430,7 @@ let weapons = {
             "syao",
             "cyno",
             "rozariya",
+            "escoffier",
         ],
         "image": "weapon_97.png"
     },
@@ -4494,6 +4592,7 @@ let weapons = {
             "emilie",
             "syao",
             "cyno",
+            "escoffier",
             "rozariya",
             "shenh-he",
         ],
@@ -4552,6 +4651,7 @@ let weapons = {
             "sikanoin-hehjdzo",
             "nin-guan",
             "mona",
+            "ifa",
         ],
         "image": "weapon_109.png"
     },
@@ -4569,6 +4669,7 @@ let weapons = {
             "neuvillet",
             "saharoza",
             "mualani",
+            "ifa",
         ],
         "image": "weapon_110.png"
     },
@@ -4616,6 +4717,7 @@ let weapons = {
             "mualani",
             "neuvillet",
             "sikanoin-hehjdzo",
+            "ifa",
         ],
         "image": "weapon_113.png"
     },
@@ -4843,6 +4945,7 @@ let weapons = {
             "kli",
             "lan-yan",
             "liza",
+            "ifa",
         ],
         "image": "weapon_125.png"
     },
@@ -4861,6 +4964,7 @@ let weapons = {
             "kli",
             "lan-yan",
             "liza",
+            "ifa",
         ],
         "image": "weapon_126.png"
     },
@@ -4995,6 +5099,7 @@ let weapons = {
             "lan-yan",
             "mualani",
             "strannik",
+            "ifa",
         ],
         "image": "weapon_133.png"
     },
@@ -5014,6 +5119,7 @@ let weapons = {
             "lan-yan",
             "mualani",
             "strannik",
+            "ifa",
         ],
         "image": "weapon_134.png"
     },
@@ -5056,6 +5162,7 @@ let weapons = {
             "kli",
             "mualani",
             "strannik",
+            "ifa",
         ],
         "image": "weapon_136.png"
     },
@@ -5155,6 +5262,7 @@ let weapons = {
             "liza",
             "saharoza",
             "mizuki",
+            "ifa",
         ],
         "image": "weapon_141.png"
     },
@@ -5168,6 +5276,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "syan-lin",
+            "escoffier",
             "chzhun-li",
             "yaoyao",
             "chevreuse",
@@ -5190,7 +5299,22 @@ let weapons = {
         "additional_stat": "<b>Сила атаки</b><br>9%~41,3%\n",
         "passive": "Попадания обычной или заряженной атакой дают музыкальную ноту. При накоплении 5 нот активируется сила музыки, которая наносит <b>100%||125%||150%||175%||200%</b> урона окружающим врагам.<br>Ноты исчезают через 30 сек.<br>Новую ноту можно получить раз в 0,5 сек.",
         "material_days": [],
-        "characters": [],
+        "characters": [
+            "clorinde",
+            "al-haitam",
+            "keh-cin",
+            "kamisato-ayaka",
+            "kamisato-ayato",
+            "chiori",
+            "sin-cyu",
+            "bennet",
+            "furina",
+            "keja",
+            "lynette",
+            "xilonen",
+            "albedo",
+            "ci-ci",
+        ],
         "image": "weapon_143.png"
     }
 }

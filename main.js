@@ -3,8 +3,8 @@ var artifacts = {
         "title": "<strong>Финал галерей глубин</strong>",
         "desc": "<strong>2 предмета:</strong> Даёт 15% бонус Крио урона.<br><strong>4 предмета:</strong> Когда энергия экипированного персонажа равна 0, урон обычной атаки и взрыва стихии повышается на 60%. После того как экипированный персонаж наносит урон обычной атакой, данный эффект на 6 сек. перестаёт применяться для взрыва стихии. После того как экипированный персонаж наносит урон взрывом стихии, данный эффект на 6 сек. перестаёт применяться для обычной атаки. Этот эффект может возникнуть, даже если экипированный персонаж вне поля боя.",
         "characters": [
+            "skirk",
             "kamisato-ayaka",
-            "rozariya",
         ]
     },
     "long-nights-oath": {
@@ -47,43 +47,32 @@ var artifacts = {
             "citlali",
             "xilonen",
             "kachina",
-            "xianyun",
             "chevreuse",
             "charlotte",
             "pyro-puteshestvennik",
             "bennet",
             "nahida",
-            "kazuha",
             "toma",
             "saharoza",
             "baizhu",
-            "kirara",
             "yaoyao",
             "barbara",
-            "noehll",
             "diona",
             "dehya",
             "faruzan",
-            "sayu",
             "kuki-sinobu",
             "kandakia",
             "kokomi",
             "amber",
             "chun-yun",
             "shenh-he",
-            "venti",
             "nin-guan",
             "albedo",
             "mona",
             "chzhun-li",
-            "kollei",
-            "ci-ci",
-            "dzhinn",
             "sara-kudzyo",
             "layla",
-            "goro",
-            "yun-czin",
-            "mizuki",
+            "dahlia",
         ]
     },
     "fragment-of-harmonic-whimsy": {
@@ -110,7 +99,6 @@ var artifacts = {
             "amber",
             "yoimiya",
             "al-haitam",
-            "mizuki",
         ]
     },
     "eho-golosov-v-nochnom-lesu": {
@@ -148,6 +136,7 @@ var artifacts = {
         "title": "<strong>Охотник Сумеречного двора</strong>",
         "desc": "<strong>2 предмета:</strong> Увеличивает урон обычной и заряженной атаки на 15%.<br><strong>4 предмета:</strong> Увеличивает шанс крит. попадания на 12% на 5 сек., когда текущее HP увеличивается или снижается. Эффект может складываться до 3 раз.",
         "characters": [
+            "skirk",
             "varesa",
             "gaming",
             "navia",
@@ -203,6 +192,7 @@ var artifacts = {
         "title": "Церемония древней знати",
         "desc": "<strong>2 предмета:</strong> Увеличивает урон взрыва стихии на 20%.<br><strong>4 предмета:</strong> Активация взрыва стихии увеличивает силу атаки всех членов отряда на 20% в течение 12 сек. Эффект не складывается.",
         "characters": [
+            "dahlia",
             "iansan",
             "arlecchino",
             "citlali",
@@ -314,6 +304,7 @@ var artifacts = {
             "nilu",
             "toma",
             "diona",
+            "dahlia",
             "ci-ci",
             "chzhun-li",
             "albedo",
@@ -335,6 +326,8 @@ var artifacts = {
         "title": "Заблудший в метели",
         "desc": "<strong>2 предмета:</strong> Увеличивает бонус Крио урона на 15%.<br><strong>4 предмета:</strong> Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус Заморозка, то дополнительно увеличивает шанс крит. попадания на 20%.",
         "characters": [
+            "skirk",
+            "kamisato-ayaka",
             "escoffier",
             "charlotte",
             "citlali",
@@ -344,7 +337,6 @@ var artifacts = {
             "gan-yuj",
             "layla",
             "shenh-he",
-            "kamisato-ayaka",
             "keja"
         ]
     },
@@ -720,6 +712,22 @@ var artifacts = {
 };
 
 var characters = {
+    "skirk": {
+        "name": "Скирк",
+        "talent": "contention",
+        "worldBoss": {
+            "id": "chess",
+            "items": "knight",
+        }
+    },
+    "dahlia": {
+        "name": "Далия",
+        "talent": "poetry",
+        "worldBoss": {
+            "id": "fire",
+            "items": "scale",
+        }
+    },
     "escoffier": {
         "name": "Эскофье",
         "talent": "justice",
@@ -1879,6 +1887,29 @@ var talants = {
 
 
 let weapons = {
+    "weapon_016": {
+        "name": "Лазурное сияние",
+        "type": "Одноручное",
+        "stars": "5",
+        "main_stat": "Базовая атака <br>48~674\n",
+        "additional_stat": "<b>Шанс крит. попадания</b><br>4,8%~22,1%\n",
+        "passive": "Дар Белой горы. На 12 сек. после применения элементального навыка сила атаки повышается на <b>24%||30%||36%||42%||48%</b>. Если в это время у экипированного персонажа энергия равна 0, сила атаки дополнительно повышается на <b>24%||30%||36%||42%||48%</b>, а крит. урон - на <b>40%||50%||60%||70%||80%</b>.",
+        "material_days": [],
+        "characters": [
+            "skirk",
+            "clorinde",
+            "kamisato-ayaka",
+            "kamisato-ayato",
+            "al-haitam",
+            "keh-cin",
+            "chiori",
+            "sin-cyu",
+            "bennet",
+            "albedo",
+            "keja",
+        ],
+        "image": "weapon_016.webp"
+    },
     "weapon_015": {
         "name": "Симфонист ароматов",
         "type": "Древковое",
@@ -2011,6 +2042,7 @@ let weapons = {
             "xilonen",
             "chiori",
             "albedo",
+            "dahlia",
         ],
         "image": "weapon_09.webp"
     },
@@ -2083,6 +2115,7 @@ let weapons = {
             "clorinde",
             "kamisato-ayaka",
             "kamisato-ayato",
+            "skirk",
             "al-haitam",
             "furina",
             "keh-cin",
@@ -2142,6 +2175,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "chiori",
+            "skirk",
             "lynette",
             "xilonen",
             "kamisato-ayaka",
@@ -2356,6 +2390,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "kamisato-ayato",
+            "skirk",
             "clorinde",
             "kamisato-ayaka",
             "al-haitam",
@@ -2567,6 +2602,7 @@ let weapons = {
             "kamisato-ayaka",
             "clorinde",
             "al-haitam",
+            "skirk",
             "keh-cin",
             "kamisato-ayato",
             "chiori",
@@ -2688,6 +2724,7 @@ let weapons = {
             "kamisato-ayaka",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "keja",
             "lynette",
@@ -2754,6 +2791,7 @@ let weapons = {
             "kuki-sinobu",
             "furina",
             "layla",
+            "dahlia",
         ],
         "image": "weapon_26.png"
     },
@@ -2834,6 +2872,7 @@ let weapons = {
             "kamisato-ayato",
             "clorinde",
             "kamisato-ayaka",
+            "skirk",
             "keh-cin",
             "lynette",
             "chiori",
@@ -2991,6 +3030,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "furina",
+            "skirk",
             "kamisato-ayaka",
             "clorinde",
             "al-haitam",
@@ -3065,6 +3105,7 @@ let weapons = {
             "clorinde",
             "al-haitam",
             "keh-cin",
+            "skirk",
             "kamisato-ayato",
             "chiori",
             "sin-cyu",
@@ -3140,6 +3181,7 @@ let weapons = {
         "passive": "Надвигающийся рубеж. Повышает урон обычной и заряженной атаки на <b>20%||25%||30%||35%||40%</b>, а также шанс крит. попадания обычной и заряженной атаки на <b>8%||10%||12%||14%||16%</b>, если персонаж защищён щитом.",
         "material_days": [],
         "characters": [
+            "skirk",
             "kamisato-ayaka",
             "clorinde",
             "al-haitam",
@@ -3213,6 +3255,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "keja",
             "sin-cyu",
             "kamisato-ayaka",
@@ -3406,6 +3449,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "dzhinn",
             "keja",
@@ -3728,6 +3772,7 @@ let weapons = {
             "kamisato-ayaka",
             "clorinde",
             "al-haitam",
+            "skirk",
             "keh-cin",
             "kamisato-ayato",
             "sin-cyu",
@@ -3778,6 +3823,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "keja",
             "lynette",
@@ -3954,6 +4000,7 @@ let weapons = {
         "passive": "Активация элементального навыка повышает силу атаки на <b>12%||15%||18%||21%||24%</b> на 15 сек. и накладывает Долг жизни, равный 25% от макс. HP. Эффект может возникнуть один раз в 10 сек. Когда долг жизни снимается, сила атаки повышается на <b>2,4%||3%||3,6%||4,2%||4,8%</b> от отданного значения Долга жизни (макс. <b>150||187,5||225||262,5||300</b> ед.) на 15 сек.",
         "material_days": [],
         "characters": [
+            "skirk",
             "kamisato-ayaka",
             "kamisato-ayato",
             "clorinde",
@@ -4060,6 +4107,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "chiori",
             "albedo",
@@ -4139,6 +4187,7 @@ let weapons = {
             "nilu",
             "furina",
             "layla",
+            "dahlia",
             "kirara",
             "kuki-sinobu",
         ],
@@ -4234,6 +4283,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "keja",
             "lynette",
@@ -4859,6 +4909,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "keja",
             "lynette",
@@ -4876,6 +4927,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "bennet",
+            "dahlia",
             "sin-cyu",
             "chiori",
             "furina",
@@ -5047,6 +5099,7 @@ let weapons = {
             "sin-cyu",
             "kazuha",
             "bennet",
+            "dahlia",
             "dzhinn",
             "lynette",
             "kirara",
@@ -5071,6 +5124,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "chiori",
             "sin-cyu",
             "bennet",
@@ -5195,6 +5249,7 @@ let weapons = {
             "chiori",
             "albedo",
             "sin-cyu",
+            "dahlia",
         ],
         "image": "weapon_138.png"
     },
@@ -5212,6 +5267,7 @@ let weapons = {
             "al-haitam",
             "keh-cin",
             "kamisato-ayato",
+            "skirk",
             "sin-cyu",
             "bennet",
             "keja",
@@ -5229,6 +5285,7 @@ let weapons = {
         "passive": "Увеличивает урон обычной и заряженной атаки на <b>20%||25%||30%||35%||40%</b>. Крит. попадания обычной и заряженной атакой восстанавливают HP, равное <b>60%||70%||80%||90%||100%</b> от силы атаки. Может возникнуть раз в 5 сек.",
         "material_days": [],
         "characters": [
+            "skirk",
             "kamisato-ayaka",
             "clorinde",
             "al-haitam",
@@ -5305,6 +5362,7 @@ let weapons = {
             "keh-cin",
             "kamisato-ayaka",
             "kamisato-ayato",
+            "skirk",
             "chiori",
             "sin-cyu",
             "bennet",

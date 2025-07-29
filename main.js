@@ -99,6 +99,7 @@ var artifacts = {
             "amber",
             "yoimiya",
             "al-haitam",
+            "ineffa",
         ]
     },
     "eho-golosov-v-nochnom-lesu": {
@@ -164,6 +165,7 @@ var artifacts = {
             "furina",
             "nahida",
             "yae-miko",
+            "ineffa",
             "fishl",
             "albedo",
             "kachina",
@@ -232,6 +234,7 @@ var artifacts = {
             "kollei",
             "kinich",
             "kachina",
+            "ineffa",
         ]
     },
     "stranstvuyushchij-ansambl": {
@@ -273,6 +276,7 @@ var artifacts = {
         "title": "Позолоченные сны",
         "desc": "<strong>2 предмета:</strong> Увеличивает мастерство стихий на 80 ед.<br><strong>4 предмета:</strong> На 8 сек. после вызова элементальной реакции согласно элементам других персонажей в отряде экипированный этими артефактами персонаж получает следующие усиления: сила атаки повышается на 14% за каждого персонажа с таким же элементом, как у экипированного персонажа; мастерство стихий повышается на 50 ед. за каждого персонажа с иным элементом. Каждое из этих усилений при подсчёте включает до 3 персонажей. Эффект может возникнуть один раз в 8 сек. Срабатывает, даже если экипированный этими артефактами персонаж не на поле боя.",
         "characters": [
+            "ineffa",
             "emilie",
             "mavuika",
             "chasca",
@@ -378,6 +382,7 @@ var artifacts = {
             "puteshestvennik-geo",
             "behj-dou",
             "kamisato-ayaka",
+            "ineffa",
             "amber",
             "noehll",
             "lynette",
@@ -453,6 +458,7 @@ var artifacts = {
             "kamisato-ayaka",
             "gan-yuj",
             "tartalya",
+            "ineffa",
         ]
     },
     "blednyj-ogon": {
@@ -481,6 +487,7 @@ var artifacts = {
             "keh-cin",
             "dilyuk",
             "rehjzor",
+            "ineffa",
             "fishl"
         ]
     },
@@ -539,7 +546,8 @@ var artifacts = {
             "liza",
             "puteshestvennik-ehlektro",
             "yae-miko",
-            "sara-kudzyo"
+            "sara-kudzyo",
+            "ineffa",
         ]
     },
     "goryashchaya-alaya-vedma": {
@@ -712,6 +720,14 @@ var artifacts = {
 };
 
 var characters = {
+    "ineffa": {
+        "name": "Инеффа",
+        "talent": "conflict",
+        "worldBoss": {
+            "id": "fire",
+            "items": "sunfire",
+        }
+    },
     "skirk": {
         "name": "Скирк",
         "talent": "contention",
@@ -1887,6 +1903,27 @@ var talants = {
 
 
 let weapons = {
+    "weapon_017": {
+        "name": "Расколотый ореол",
+        "type": "Древковое",
+        "stars": "5",
+        "main_stat": "Базовая атака <br>46~608\n",
+        "additional_stat": "<b>Крит. урон</b><br>14,4%~66,2%\n",
+        "passive": "Очищающий венец. После активации элементального навыка или взрыва стихии сила атаки увеличивается на <b>24%||30%||36%||42%||48%</b> на 20 сек. Если экипированный персонаж в это время создаёт щит, то на 20 сек. он получает эффект Электризующего эдикта: урон реакции Лунный заряд всех членов отряда поблизости увеличивается на <b>40%||50%||60%||70%||80%</b>.",
+        "material_days": [],
+        "characters": [
+            "ineffa",
+            "escoffier",
+            "emilie",
+            "hu-tao",
+            "arlecchino",
+            "syao",
+            "cyno",
+            "rozariya",
+            "shenh-he",
+        ],
+        "image": "weapon_017.webp"
+    },
     "weapon_016": {
         "name": "Лазурное сияние",
         "type": "Одноручное",
@@ -1921,6 +1958,7 @@ let weapons = {
         "characters": [
             "escoffier",
             "emilie",
+            "ineffa",
             "arlecchino",
             "hu-tao",
             "syao",
@@ -2094,6 +2132,7 @@ let weapons = {
         "characters": [
             "emilie",
             "escoffier",
+            "ineffa",
             "arlecchino",
             "hu-tao",
             "syao",
@@ -2159,6 +2198,7 @@ let weapons = {
             "hu-tao",
             "syao",
             "escoffier",
+            "ineffa",
             "cyno",
             "rozariya",
             "shenh-he",
@@ -2347,6 +2387,7 @@ let weapons = {
             "chzhun-li",
             "emilie",
             "escoffier",
+            "ineffa",
             "arlecchino",
             "cyno",
             "hu-tao",
@@ -2442,6 +2483,7 @@ let weapons = {
             "chzhun-li",
             "shenh-he",
             "emilie",
+            "ineffa",
             "arlecchino",
             "cyno",
             "hu-tao",
@@ -2482,6 +2524,7 @@ let weapons = {
             "escoffier",
             "arlecchino",
             "emilie",
+            "ineffa",
             "syao",
             "cyno",
             "rozariya",
@@ -2749,6 +2792,7 @@ let weapons = {
             "escoffier",
             "arlecchino",
             "emilie",
+            "ineffa",
             "syao",
             "rozariya",
             "shenh-he",
@@ -2924,6 +2968,7 @@ let weapons = {
             "hu-tao",
             "syan-lin",
             "emilie",
+            "ineffa",
             "rozariya",
             "shenh-he",
         ],
@@ -3116,6 +3161,19 @@ let weapons = {
         ],
         "image": "weapon_41.png"
     },
+    "weapon_41_18": {
+        "name": "Выкованное пламенем озарение",
+        "type": "Двуручное",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>42~510\n",
+        "additional_stat": "<b>Мастерство стихий</b><br>36~165\n",
+        "passive": "Разум в расцвете. Активация реакций Заряжен, Лунный заряд или Бутонизация восстанавливает <b>12||15||18||21||24</b> ед. энергии и на 15 сек. повышает мастерство стихий на <b>60||75||90||105||120</b> ед. Эффект может возникнуть один раз в 15 сек. и срабатывает, даже когда экипированный персонаж не на поле боя.",
+        "material_days": [],
+        "characters": [
+            "kaveh",
+        ],
+        "image": "weapon_41_18.webp"
+    },
     "weapon_41_17": {
         "name": "Каденция одиночества",
         "type": "Стрелковое",
@@ -3146,6 +3204,7 @@ let weapons = {
             "syan-lin",
             "syao",
             "emilie",
+            "ineffa",
             "rozariya",
             "kandakia",
         ],
@@ -3467,6 +3526,7 @@ let weapons = {
         "passive": "Увеличивает урон элементального навыка на <b>6%||7.5%||9%||10.5%||12%</b>. Когда элементальный навык поражает противника, персонаж теряет 3 единицы энергии, но восстанавливает <b>3||3.5||4||4.5||5</b> единицы энергии каждые 2 сек. в течение следующих 6 сек. Эффект может возникнуть один раз в 10 сек. Эффект может сработать, даже когда персонаж не находится на поле.",
         "material_days": [],
         "characters": [
+            "ineffa",
             "toma",
             "syogun-rajdehn",
             "emilie",
@@ -3593,6 +3653,7 @@ let weapons = {
             "emilie",
             "rozariya",
             "escoffier",
+            "ineffa",
         ],
         "image": "weapon_51.png"
     },
@@ -3691,6 +3752,7 @@ let weapons = {
             "syan-lin",
             "shenh-he",
             "rozariya",
+            "ineffa",
         ],
         "image": "weapon_56.png"
     },
@@ -3757,6 +3819,7 @@ let weapons = {
             "rozariya",
             "shenh-he",
             "escoffier",
+            "ineffa",
         ],
         "image": "weapon_59.png"
     },
@@ -3955,6 +4018,7 @@ let weapons = {
             "rozariya",
             "shenh-he",
             "escoffier",
+            "ineffa",
         ],
         "image": "weapon_69.png"
     },
@@ -4224,6 +4288,7 @@ let weapons = {
             "rozariya",
             "shenh-he",
             "escoffier",
+            "ineffa",
         ],
         "image": "weapon_83.png"
     },
@@ -4371,6 +4436,7 @@ let weapons = {
             "emilie",
             "toma",
             "syogun-rajdehn",
+            "ineffa",
         ],
         "image": "weapon_91.png"
     },
@@ -4475,6 +4541,7 @@ let weapons = {
             "hu-tao",
             "syan-lin",
             "shenh-he",
+            "ineffa",
             "arlecchino",
             "emilie",
             "syao",
@@ -4645,6 +4712,7 @@ let weapons = {
             "escoffier",
             "rozariya",
             "shenh-he",
+            "ineffa",
         ],
         "image": "weapon_106.png"
     },
@@ -4662,6 +4730,7 @@ let weapons = {
             "arlecchino",
             "cyno",
             "rozariya",
+            "ineffa",
         ],
         "image": "weapon_107.png"
     },
@@ -4956,6 +5025,7 @@ let weapons = {
             "rozariya",
             "cyno",
             "shenh-he",
+            "ineffa",
         ],
         "image": "weapon_123.png"
     },
@@ -5334,6 +5404,7 @@ let weapons = {
         "characters": [
             "syan-lin",
             "escoffier",
+            "ineffa",
             "chzhun-li",
             "yaoyao",
             "chevreuse",

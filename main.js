@@ -1,4 +1,22 @@
 var artifacts = {
+    "night-of-the-skys-unveiling": {
+        "title": "<strong>Ночь открытия неба</strong>",
+        "desc": "<strong>2 предмета:</strong> Увеличивает мастерство стихий на 80 ед.<br><strong>4 предмета:</strong> Если персонажи отряда поблизости вызывают Лунные реакции, когда экипированный персонаж активен, на 4 сек. активируется эффект Сияющей луны: Намерение: если Лунное знамение отряда – Зарождающееся сияние/Высшее сияние, шанс крит. попадания повышается на 15%/30%. За каждый активный эффект Сияющей луны разных видов в отряде урон Лунных реакций всех персонажей отряда увеличивается на 10%. Эффекты Сияющей луны не складываются.",
+        "characters": [
+            "flins",
+            "lauma",
+        ]
+    },
+    "silken-moons-serenade": {
+        "title": "<strong>Серенада шёлковой луны</strong>",
+        "desc": "<strong>2 предмета:</strong> Увеличивает скорость восстановления энергии на 20%.<br><strong>4 предмета:</strong> При нанесении элементального урона на 8 сек. возникает эффект Сияющей луны: Доверие: если Лунное знамение отряда – Зарождающееся сияние/Высшее сияние, мастерство стихий всех персонажей отряда повышается на 60/120 ед. Такой эффект может возникнуть, даже если экипированный персонаж не находится на поле боя. За каждый активный эффект Сияющей луны разных видов в отряде урон Лунных реакций всех персонажей отряда увеличивается на 10%. Эффекты Сияющей луны не складываются.",
+        "characters": [
+            "flins",
+            "lauma",
+            "aino",
+            "ineffa",
+        ]
+    },
     "finale-of-the-deep-galleries": {
         "title": "<strong>Финал галерей глубин</strong>",
         "desc": "<strong>2 предмета:</strong> Даёт 15% бонус Крио урона.<br><strong>4 предмета:</strong> Когда энергия экипированного персонажа равна 0, урон обычной атаки и взрыва стихии повышается на 60%. После того как экипированный персонаж наносит урон обычной атакой, данный эффект на 6 сек. перестаёт применяться для взрыва стихии. После того как экипированный персонаж наносит урон взрывом стихии, данный эффект на 6 сек. перестаёт применяться для обычной атаки. Этот эффект может возникнуть, даже если экипированный персонаж вне поля боя.",
@@ -138,7 +156,6 @@ var artifacts = {
         "desc": "<strong>2 предмета:</strong> Увеличивает урон обычной и заряженной атаки на 15%.<br><strong>4 предмета:</strong> Увеличивает шанс крит. попадания на 12% на 5 сек., когда текущее HP увеличивается или снижается. Эффект может складываться до 3 раз.",
         "characters": [
             "skirk",
-            "varesa",
             "gaming",
             "navia",
             "wriothesley",
@@ -196,15 +213,15 @@ var artifacts = {
         "characters": [
             "dahlia",
             "iansan",
-            "arlecchino",
             "citlali",
-            "mavuika",
-            "chasca",
+            "aino",
             "olorun",
             "xianyun",
             "charlotte",
             "lan-yan",
-            "puteshestvennik-anemo",
+            "mavuika",
+            "arlecchino",
+            "chasca",
             "puteshestvennik-geo",
             "pyro-puteshestvennik",
             "mizuki",
@@ -277,6 +294,9 @@ var artifacts = {
         "desc": "<strong>2 предмета:</strong> Увеличивает мастерство стихий на 80 ед.<br><strong>4 предмета:</strong> На 8 сек. после вызова элементальной реакции согласно элементам других персонажей в отряде экипированный этими артефактами персонаж получает следующие усиления: сила атаки повышается на 14% за каждого персонажа с таким же элементом, как у экипированного персонажа; мастерство стихий повышается на 50 ед. за каждого персонажа с иным элементом. Каждое из этих усилений при подсчёте включает до 3 персонажей. Эффект может возникнуть один раз в 8 сек. Срабатывает, даже если экипированный этими артефактами персонаж не на поле боя.",
         "characters": [
             "ineffa",
+            "lauma",
+            "aino",
+            "flins",
             "emilie",
             "mavuika",
             "chasca",
@@ -378,8 +398,7 @@ var artifacts = {
             "charlotte",
             "wriothesley",
             "fremine",
-            "puteshestvennik-anemo",
-            "puteshestvennik-geo",
+            "flins",
             "behj-dou",
             "kamisato-ayaka",
             "ineffa",
@@ -430,6 +449,7 @@ var artifacts = {
             "sin-cyu",
             "syan-lin",
             "behj-dou",
+            "aino",
             "mona",
             "fremine",
             "layla",
@@ -720,6 +740,30 @@ var artifacts = {
 };
 
 var characters = {
+    "flins": {
+        "name": "Флинс",
+        "talent": "wandering",
+        "worldBoss": {
+            "id": "chess",
+            "items": "queen",
+        }
+    },
+    "lauma": {
+        "name": "Лаума",
+        "talent": "moon",
+        "worldBoss": {
+            "id": "fire",
+            "items": "scale",
+        }
+    },
+    "aino": {
+        "name": "Айно",
+        "talent": "paradise",
+        "worldBoss": {
+            "id": "sluga",
+            "items": "feather",
+        }
+    },
     "ineffa": {
         "name": "Инеффа",
         "talent": "conflict",
@@ -1898,11 +1942,91 @@ var talants = {
             7: true,
         }
     },
+    "paradise": {
+        "name": "Философия о «Рае»",
+        "dungeon": "",
+        "days": {
+            1: false,
+            2: false,
+            3: false,
+            4: false,
+            5: false,
+            6: false,
+            7: true,
+        }
+    },
+    "moon": {
+        "name": "Философия о «Лунном свете»",
+        "dungeon": "",
+        "days": {
+            1: false,
+            2: false,
+            3: false,
+            4: false,
+            5: false,
+            6: false,
+            7: true,
+        }
+    },
+    "wandering": {
+        "name": "Философия о «Скитании»",
+        "dungeon": "",
+        "days": {
+            1: false,
+            2: false,
+            3: false,
+            4: false,
+            5: false,
+            6: false,
+            7: true,
+        }
+    },
 }
 
 
 
 let weapons = {
+    "weapon_019": {
+        "name": "Окровавленные руины",
+        "type": "Древковое",
+        "stars": "5",
+        "main_stat": "Базовая атака <br>46~608\n",
+        "additional_stat": "<b>Крит. урон</b><br>14,4%~66,2%\n",
+        "passive": "Дань скорби. После применения взрыва стихии повышает урон реакции Лунный заряд экипированного персонажа, наносимый врагу, на 36% на 3,5 сек. Кроме того, после активации реакции Лунный заряд экипированным персонажем активируется эффект Реквием руины: крит. урон повышается на 28% на 6 сек., а также экипированный персонаж восстанавливает 12 ед. энергии. Восстанавливать энергию таким способом можно раз в 14 сек.",
+        "material_days": [],
+        "characters": [
+            "flins",
+            "ineffa",
+            "escoffier",
+            "emilie",
+            "hu-tao",
+            "arlecchino",
+            "syao",
+            "cyno",
+            "rozariya",
+            "shenh-he",
+        ],
+        "image": "weapon_019.webp"
+    },
+    "weapon_018": {
+        "name": "Зеркало прядильщицы ночи",
+        "type": "Катализатор",
+        "stars": "5",
+        "main_stat": "Базовая атака <br>44~542\n",
+        "additional_stat": "<b>Мастерство стихий</b><br>58-265\n",
+        "passive": "Тысячелетний гимн. Нанося Гидро или Дендро урон элементальным навыком, экипированный персонаж получает эффект Молитва крайнего севера: мастерство стихий повышается на <b>60||75||90||105||120</b> ед. на 4,5 сек. Когда персонажи отряда поблизости активируют реакцию Лунная бутонизация, экипированный персонаж получает эффект Стих новолуния: мастерство стихий повышается на <b>60||75||90||105||120</b> ед. на 10 сек. Если Молитва крайнего севера и Стих новолуния действуют одновременно, урон реакции Бутонизация всех персонажей отряда поблизости повышается на <b>120%||150%||180%||210%||240%</b>, реакций Вегетация и Цветение – на <b>80%||100%||120%||140%||160%</b>, а реакции Лунная бутонизация – на <b>40%||50%||60%||70%||80%</b>. Этот эффект не складывается и срабатывает, даже когда экипированный персонаж не на поле боя.",
+        "material_days": [],
+        "characters": [
+            "lauma",
+            "nahida",
+            "saharoza",
+            "ifa",
+            "mizuki",
+            "citlali",
+            "lan-yan",
+        ],
+        "image": "weapon_018.webp"
+    },
     "weapon_017": {
         "name": "Расколотый ореол",
         "type": "Древковое",
@@ -1913,6 +2037,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "ineffa",
+            "flins",
             "escoffier",
             "emilie",
             "hu-tao",
@@ -1963,6 +2088,7 @@ let weapons = {
             "hu-tao",
             "syao",
             "cyno",
+            "flins",
             "rozariya",
             "shenh-he",
         ],
@@ -2002,6 +2128,7 @@ let weapons = {
             "lan-yan",
             "saharoza",
             "nahida",
+            "lauma",
         ],
         "image": "weapon_013.webp"
     },
@@ -2041,6 +2168,7 @@ let weapons = {
             "lan-yan",
             "saharoza",
             "nahida",
+            "lauma",
         ],
         "image": "weapon_011.webp"
     },
@@ -2137,6 +2265,7 @@ let weapons = {
             "hu-tao",
             "syao",
             "cyno",
+            "flins",
             "rozariya",
             "shenh-he",
         ],
@@ -2199,6 +2328,7 @@ let weapons = {
             "syao",
             "escoffier",
             "ineffa",
+            "flins",
             "cyno",
             "rozariya",
             "shenh-he",
@@ -2390,6 +2520,7 @@ let weapons = {
             "ineffa",
             "arlecchino",
             "cyno",
+            "flins",
             "hu-tao",
             "syan-lin",
             "rozariya",
@@ -2486,6 +2617,7 @@ let weapons = {
             "ineffa",
             "arlecchino",
             "cyno",
+            "flins",
             "hu-tao",
             "syan-lin",
             "rozariya",
@@ -2525,6 +2657,7 @@ let weapons = {
             "arlecchino",
             "emilie",
             "ineffa",
+            "flins",
             "syao",
             "cyno",
             "rozariya",
@@ -2787,6 +2920,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "cyno",
+            "flins",
             "syan-lin",
             "hu-tao",
             "escoffier",
@@ -2873,6 +3007,7 @@ let weapons = {
             "saharoza",
             "citlali",
             "mizuki",
+            "lauma",
             "ifa",
             "baizhu",
         ],
@@ -2962,6 +3097,7 @@ let weapons = {
         "characters": [
             "syao",
             "arlecchino",
+            "flins",
             "syogun-rajdehn",
             "cyno",
             "escoffier",
@@ -3161,6 +3297,142 @@ let weapons = {
         ],
         "image": "weapon_41.png"
     },
+    "weapon_41_25": {
+        "name": "Крюк силка",
+        "type": "Стрелковое",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>41~454\n",
+        "additional_stat": "<b>Восст. энергии</b><br>13,3%~61,3%\n",
+        "passive": "Стремительная тень. На 12 сек. после активации элементальной реакции мастерство стихий повышается на <b>60||75||90||105||120</b> ед. Лунное знамение – Высшее сияние: мастерство стихий от данного эффекта дополнительно повышается на <b>60||75||90||105||120</b> ед. Этот эффект срабатывает, даже когда экипированный персонаж не на поле боя.",
+        "material_days": [],
+        "characters": [
+            "fishl",
+            "sethos",
+            "kollei",
+            "diona",
+            "venti",
+            "tignari",
+            "olorun",
+            "chasca",
+            "yelan",
+            "gan-yuj",
+            "amber",
+            "yoimiya",
+        ],
+        "image": "weapon_41_25.webp"
+    },
+    "weapon_41_24": {
+        "name": "Фонарь чёрной сердцевины",
+        "type": "Катализатор",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>41~454\n",
+        "additional_stat": "<b>Мастерство стихий</b><br>48~221\n",
+        "passive": "Свидетельство союза. Повышает урон реакции Бутонизация на <b>48%||60%||72%||84%||96%</b>, а реакции Лунная бутонизация – на <b>12%||15%||18%||21%||24%</b>. Лунное знамение – Высшее сияние: урон реакции Лунная бутонизация дополнительно повышается на <b>12%||15%||18%||21%||24%</b>.",
+        "material_days": [],
+        "characters": [
+            "lauma",
+            "nahida",
+            "saharoza",
+            "ifa",
+            "mizuki",
+            "citlali",
+            "lan-yan",
+        ],
+        "image": "weapon_41_24.webp"
+    },
+    "weapon_41_23": {
+        "name": "Лютня ткача света",
+        "type": "Катализатор",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>42~510\n",
+        "additional_stat": "<b>Восст. энергии</b><br>10,0%~45,9%\n",
+        "passive": "Последний голос. После использования элементального навыка мастерство стихий экипированного персонажа повышается на <b>100||125||150||175||200</b> ед. на 20 сек.",
+        "material_days": [],
+        "characters": [
+            "lauma",
+            "nahida",
+            "saharoza",
+            "ifa",
+            "mizuki",
+            "citlali",
+            "lan-yan",
+        ],
+        "image": "weapon_41_23.webp"
+    },
+    "weapon_41_22": {
+        "name": "Лопата старателя",
+        "type": "Древковое",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>42~510\n",
+        "additional_stat": "<b>Сила атаки</b><br>9,0%~41,3%\n",
+        "passive": "Молниеносная решительность. Урон реакции Заряжен повышается на <b>48%||60%||72%||84%||96%</b>, а реакции Лунный заряд – на <b>12%||15%||18%||21%||24%</b>. Лунное знамение – Высшее сияние: урон реакции Лунный заряд дополнительно повышается на  <b>12%||15%||18%||21%||24%</b>.",
+        "material_days": [],
+        "characters": [
+            "ineffa",
+            "flins",
+            "cyno",
+            "escoffier",
+            "shenh-he",
+        ],
+        "image": "weapon_41_22.webp"
+    },
+    "weapon_41_21": {
+        "name": "Мастер-ключ",
+        "type": "Двуручное",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>41~454\n",
+        "additional_stat": "<b>Восст. энергии</b><br>13,3%~61,3%\n",
+        "passive": "Мгновенное решение. На 12 сек. после активации элементальной реакции мастерство стихий повышается на <b>60||75||90||105||120</b> ед. Лунное знамение – Высшее сияние: мастерство стихий от данного эффекта дополнительно повышается на <b>60||75||90||105||120</b> ед. Этот эффект срабатывает, даже когда экипированный персонаж не на поле боя.",
+        "material_days": [],
+        "characters": [
+            "aino",
+            "kaveh",
+            "gaming",
+            "behj-dou",
+        ],
+        "image": "weapon_41_21.webp"
+    },
+    "weapon_41_20": {
+        "name": "Зов безмятежности",
+        "type": "Одноручное",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>44~565\n",
+        "additional_stat": "<b>Сила атаки</b><br>6,0%~27,6%\n",
+        "passive": "Завет тайного серебра. Урон взрыва стихии повышается на <b>20%||25%||30%||35%||40%</b>. Если максимум энергии экипированного персонажа не превышает 60/40 ед., то урон его взрыва стихии дополнительно повышается на <b>16%/28%||20%/35%||24%/42%||28%/49%||32%/56%</b>.",
+        "material_days": [],
+        "characters": [
+            "keh-cin",
+            "skirk",
+            "clorinde",
+            "sin-cyu",
+            "kamisato-ayaka",
+            "al-haitam",
+            "chiori",
+            "kamisato-ayato",
+            "bennet",
+            "albedo",
+            "keja",
+        ],
+        "image": "weapon_41_20.webp"
+    },
+    "weapon_41_19": {
+        "name": "Зов безмятежности",
+        "type": "Одноручное",
+        "stars": "4",
+        "main_stat": "Базовая атака <br>41~454\n",
+        "additional_stat": "<b>Восст. энергии</b><br>13,3%~61,3%\n",
+        "passive": "Затихший шёпот. На 12 сек. после активации элементальной реакции макс. HP экипированного персонажа повышается на <b>16%||20%||24%||38%||32%</b>. Лунное знамение – Высшее сияние: макс. HP от данного эффекта дополнительно повышается на <b>16%||20%||24%||38%||32%</b>. Этот эффект срабатывает, даже когда экипированный персонаж не на поле боя.",
+        "material_days": [],
+        "characters": [
+            "layla",
+            "furina",
+            "bennet",
+            "keja",
+            "lynette",
+            "ci-ci",
+        ],
+        "image": "weapon_41_19.webp"
+    },
     "weapon_41_18": {
         "name": "Выкованное пламенем озарение",
         "type": "Двуручное",
@@ -3170,6 +3442,7 @@ let weapons = {
         "passive": "Разум в расцвете. Активация реакций Заряжен, Лунный заряд или Бутонизация восстанавливает <b>12||15||18||21||24</b> ед. энергии и на 15 сек. повышает мастерство стихий на <b>60||75||90||105||120</b> ед. Эффект может возникнуть один раз в 15 сек. и срабатывает, даже когда экипированный персонаж не на поле боя.",
         "material_days": [],
         "characters": [
+            "aino",
             "kaveh",
         ],
         "image": "weapon_41_18.webp"
@@ -3205,6 +3478,7 @@ let weapons = {
             "syao",
             "emilie",
             "ineffa",
+            "flins",
             "rozariya",
             "kandakia",
         ],
@@ -3527,6 +3801,7 @@ let weapons = {
         "material_days": [],
         "characters": [
             "ineffa",
+            "flins",
             "toma",
             "syogun-rajdehn",
             "emilie",
@@ -3654,6 +3929,7 @@ let weapons = {
             "rozariya",
             "escoffier",
             "ineffa",
+            "flins",
         ],
         "image": "weapon_51.png"
     },
@@ -3753,6 +4029,7 @@ let weapons = {
             "shenh-he",
             "rozariya",
             "ineffa",
+            "flins",
         ],
         "image": "weapon_56.png"
     },
@@ -3820,6 +4097,7 @@ let weapons = {
             "shenh-he",
             "escoffier",
             "ineffa",
+            "flins",
         ],
         "image": "weapon_59.png"
     },
@@ -4015,6 +4293,7 @@ let weapons = {
             "emilie",
             "syao",
             "cyno",
+            "flins",
             "rozariya",
             "shenh-he",
             "escoffier",
@@ -4289,6 +4568,7 @@ let weapons = {
             "shenh-he",
             "escoffier",
             "ineffa",
+            "flins",
         ],
         "image": "weapon_83.png"
     },
@@ -4434,6 +4714,7 @@ let weapons = {
         "characters": [
             "yaoyao",
             "emilie",
+            "flins",
             "toma",
             "syogun-rajdehn",
             "ineffa",
@@ -4474,6 +4755,7 @@ let weapons = {
             "liza",
             "mona",
             "ifa",
+            "lauma",
         ],
         "image": "weapon_93.png"
     },
@@ -4522,6 +4804,7 @@ let weapons = {
             "sikanoin-hehjdzo",
             "yanfehj",
             "lan-yan",
+            "lauma",
             "wriothesley",
             "strannik",
             "kli",
@@ -4542,6 +4825,7 @@ let weapons = {
             "syan-lin",
             "shenh-he",
             "ineffa",
+            "flins",
             "arlecchino",
             "emilie",
             "syao",
@@ -4709,6 +4993,7 @@ let weapons = {
             "emilie",
             "syao",
             "cyno",
+            "flins",
             "escoffier",
             "rozariya",
             "shenh-he",
@@ -4771,6 +5056,7 @@ let weapons = {
             "nin-guan",
             "mona",
             "ifa",
+            "lauma",
         ],
         "image": "weapon_109.png"
     },
@@ -4837,6 +5123,7 @@ let weapons = {
             "neuvillet",
             "sikanoin-hehjdzo",
             "ifa",
+            "lauma",
         ],
         "image": "weapon_113.png"
     },
@@ -5021,6 +5308,7 @@ let weapons = {
             "syan-lin",
             "arlecchino",
             "emilie",
+            "flins",
             "syao",
             "rozariya",
             "cyno",
@@ -5283,6 +5571,7 @@ let weapons = {
             "wriothesley",
             "sikanoin-hehjdzo",
             "yanfehj",
+            "lauma",
             "kli",
             "mualani",
             "strannik",
@@ -5383,8 +5672,9 @@ let weapons = {
         "material_days": [],
         "characters": [
             "citlali",
-            "lan-yan",
             "nahida",
+            "lauma",
+            "lan-yan",
             "yanfehj",
             "liza",
             "saharoza",
